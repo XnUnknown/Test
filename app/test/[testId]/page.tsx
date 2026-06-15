@@ -9,14 +9,32 @@ import { Test, Section, QuestionForStudent } from '@/lib/types'
 import { formatSeconds, formatDuration } from '@/lib/utils'
 import Timer from '@/components/Timer'
 
-type TestState = 'loading' | 'instructions' | 'in-progress' | 'submitting' | 'submitted'
+type TestState = 'loading' | 'instructions' | 'resume-prompt' | 'in-progress' | 'submitting'
 
 interface AnswerMap {
   [questionId: string]: {
     selectedOptions: string[]
     timeSpent: number
-    lastVisitedAt: number
   }
+}
+
+interface SavedSession {
+  submissionId: string
+  answers: AnswerMap
+  startedAt: number   // unix ms — used to compute remaining time on resume
+}
+
+function sessionKey(testId: string, userId: string) {
+  return `exam_${testId}_${userId}`
+}
+function loadSession(key: string): SavedSession | null {
+  try { const s = localStorage.getItem(key); return s ? JSON.parse(s) : null } catch { return null }
+}
+function saveSession(key: string, data: SavedSession) {
+  try { localStorage.setItem(key, JSON.stringify(data)) } catch {}
+}
+function clearSavedSession(key: string) {
+  try { localStorage.removeItem(key) } catch {}
 }
 
 export default function TestPage() {
@@ -31,78 +49,132 @@ export default function TestPage() {
   const [submissionId, setSubmissionId] = useState<string | null>(null)
   const submissionCreating = useRef(false)
 
+  // examEndTime is an absolute unix ms timestamp — the single source of truth for the timer
+  const [examEndTime, setExamEndTime] = useState<number | null>(null)
+
   const [activeSectionIdx, setActiveSectionIdx] = useState(0)
   const [activeQIdx, setActiveQIdx] = useState(0)
   const [answers, setAnswers] = useState<AnswerMap>({})
   const questionStartTime = useRef<number>(Date.now())
   const [totalElapsed, setTotalElapsed] = useState(0)
-  const elapsedInterval = useRef<NodeJS.Timeout | null>(null)
+  const elapsedInterval = useRef<ReturnType<typeof setInterval> | null>(null)
 
   const [confirmSubmit, setConfirmSubmit] = useState(false)
   const [submitError, setSubmitError] = useState('')
+
+  const sKey = user ? sessionKey(testId, user.uid) : null
 
   useEffect(() => {
     if (!authLoading && !user) router.replace('/login')
   }, [user, authLoading])
 
   useEffect(() => {
-    if (!user) return
+    if (!user || !sKey) return
     async function load() {
       const testSnap = await getDoc(doc(db, 'tests', testId))
       if (!testSnap.exists() || !testSnap.data().isPublished) {
         router.replace('/dashboard')
         return
       }
-      setTest({ id: testSnap.id, ...testSnap.data() } as Test)
+      const testData = { id: testSnap.id, ...testSnap.data() } as Test
+      setTest(testData)
 
       const sectionsSnap = await getDocs(query(collection(db, 'sections'), where('testId', '==', testId)))
-      const sortedSections = sectionsSnap.docs
-        .map(d => ({ id: d.id, ...d.data() } as Section))
-        .sort((a, b) => a.order - b.order)
-      setSections(sortedSections)
+      setSections(sectionsSnap.docs.map(d => ({ id: d.id, ...d.data() } as Section)).sort((a, b) => a.order - b.order))
 
-      // Fetch questions without correct answers via API
       const idToken = await firebaseUser!.getIdToken()
-      const res = await fetch(`/api/test/${testId}/questions`, {
-        headers: { Authorization: `Bearer ${idToken}` }
-      })
+      const res = await fetch(`/api/test/${testId}/questions`, { headers: { Authorization: `Bearer ${idToken}` } })
       const data = await res.json()
       const qs: QuestionForStudent[] = (data.questions || []).sort((a: any, b: any) => a.order - b.order)
       setQuestions(qs)
 
-      // Init answer map
+      // Check localStorage for an in-progress session
+      const saved = loadSession(sKey)
+      if (saved) {
+        const endTime = saved.startedAt + testData.duration * 60 * 1000
+        // Merge saved answers with current question list to handle new questions added by admin
+        const mergedAnswers: AnswerMap = {}
+        qs.forEach(q => {
+          mergedAnswers[q.id] = saved.answers[q.id] || { selectedOptions: [], timeSpent: 0 }
+        })
+        setAnswers(mergedAnswers)
+        setSubmissionId(saved.submissionId)
+        setExamEndTime(endTime)
+        setTotalElapsed(Math.floor((Date.now() - saved.startedAt) / 1000))
+        submissionCreating.current = true
+        setState('resume-prompt')
+        return
+      }
+
+      // Fresh start
       const initAnswers: AnswerMap = {}
-      qs.forEach(q => { initAnswers[q.id] = { selectedOptions: [], timeSpent: 0, lastVisitedAt: Date.now() } })
+      qs.forEach(q => { initAnswers[q.id] = { selectedOptions: [], timeSpent: 0 } })
       setAnswers(initAnswers)
       setState('instructions')
     }
     load()
   }, [user, testId])
 
+  // Auto-save answers to localStorage whenever they change (also saves on every elapsed tick)
+  useEffect(() => {
+    if (!sKey || !submissionId || !examEndTime || !test) return
+    if (state !== 'in-progress' && state !== 'resume-prompt') return
+    const startedAt = examEndTime - test.duration * 60 * 1000
+    saveSession(sKey, { submissionId, answers, startedAt })
+  }, [answers, submissionId, examEndTime, state])
+
   function startTest() {
+    if (!test) return
+    const startedAt = Date.now()
+    const endTime = startedAt + test.duration * 60 * 1000
+    setExamEndTime(endTime)
+    questionStartTime.current = startedAt
+    setTotalElapsed(0)
     setState('in-progress')
-    questionStartTime.current = Date.now()
     elapsedInterval.current = setInterval(() => setTotalElapsed(e => e + 1), 1000)
   }
 
-  const saveCurrentQuestionTime = useCallback(() => {
-    const currentQ = currentSectionQuestions[activeQIdx]
-    if (!currentQ) return
-    const spent = Math.floor((Date.now() - questionStartTime.current) / 1000)
-    setAnswers(prev => ({
-      ...prev,
-      [currentQ.id]: {
-        ...prev[currentQ.id],
-        timeSpent: (prev[currentQ.id]?.timeSpent || 0) + spent,
-        lastVisitedAt: Date.now(),
-      }
-    }))
+  function resumeTest() {
     questionStartTime.current = Date.now()
-  }, [activeQIdx, activeSectionIdx])
+    setState('in-progress')
+    elapsedInterval.current = setInterval(() => setTotalElapsed(e => e + 1), 1000)
+  }
+
+  // Create submission doc when exam first starts (not on resume — already has one)
+  useEffect(() => {
+    if (state === 'in-progress' && !submissionId && !submissionCreating.current && user && sKey && examEndTime && test) {
+      submissionCreating.current = true
+      const startedAt = examEndTime - test.duration * 60 * 1000
+      addDoc(collection(db, 'submissions'), {
+        testId,
+        studentId: user.uid,
+        studentUsername: user.username,
+        startedAt: serverTimestamp(),
+        submittedAt: null,
+        status: 'in-progress',
+        answers: {},
+        timeOverflow: 0,
+      }).then(ref => {
+        setSubmissionId(ref.id)
+        saveSession(sKey, { submissionId: ref.id, answers, startedAt })
+      })
+    }
+  }, [state, user])
 
   const activeSection = sections[activeSectionIdx]
   const currentSectionQuestions = questions.filter(q => q.sectionId === activeSection?.id)
   const currentQ = currentSectionQuestions[activeQIdx]
+
+  const saveCurrentQuestionTime = useCallback(() => {
+    const cq = currentSectionQuestions[activeQIdx]
+    if (!cq) return
+    const spent = Math.floor((Date.now() - questionStartTime.current) / 1000)
+    setAnswers(prev => ({
+      ...prev,
+      [cq.id]: { ...prev[cq.id], timeSpent: (prev[cq.id]?.timeSpent || 0) + spent },
+    }))
+    questionStartTime.current = Date.now()
+  }, [activeQIdx, activeSectionIdx, currentSectionQuestions])
 
   function navigateToQuestion(secIdx: number, qIdx: number) {
     saveCurrentQuestionTime()
@@ -114,13 +186,10 @@ export default function TestPage() {
   function handleOptionToggle(optId: string) {
     if (!currentQ) return
     setAnswers(prev => {
-      const current = prev[currentQ.id]?.selectedOptions || []
-      let next: string[]
-      if (currentQ.type === 'single' || currentQ.type === 'true-false') {
-        next = current.includes(optId) ? [] : [optId]
-      } else {
-        next = current.includes(optId) ? current.filter(x => x !== optId) : [...current, optId]
-      }
+      const cur = prev[currentQ.id]?.selectedOptions || []
+      const next = currentQ.type === 'single' || currentQ.type === 'true-false'
+        ? (cur.includes(optId) ? [] : [optId])
+        : (cur.includes(optId) ? cur.filter(x => x !== optId) : [...cur, optId])
       return { ...prev, [currentQ.id]: { ...prev[currentQ.id], selectedOptions: next } }
     })
   }
@@ -131,17 +200,13 @@ export default function TestPage() {
   }
 
   function nextQuestion() {
-    if (activeQIdx < currentSectionQuestions.length - 1) {
-      navigateToQuestion(activeSectionIdx, activeQIdx + 1)
-    } else if (activeSectionIdx < sections.length - 1) {
-      navigateToQuestion(activeSectionIdx + 1, 0)
-    }
+    if (activeQIdx < currentSectionQuestions.length - 1) navigateToQuestion(activeSectionIdx, activeQIdx + 1)
+    else if (activeSectionIdx < sections.length - 1) navigateToQuestion(activeSectionIdx + 1, 0)
   }
 
   function prevQuestion() {
-    if (activeQIdx > 0) {
-      navigateToQuestion(activeSectionIdx, activeQIdx - 1)
-    } else if (activeSectionIdx > 0) {
+    if (activeQIdx > 0) navigateToQuestion(activeSectionIdx, activeQIdx - 1)
+    else if (activeSectionIdx > 0) {
       const prevSec = sections[activeSectionIdx - 1]
       const prevSecQs = questions.filter(q => q.sectionId === prevSec.id)
       navigateToQuestion(activeSectionIdx - 1, prevSecQs.length - 1)
@@ -152,12 +217,11 @@ export default function TestPage() {
     saveCurrentQuestionTime()
     setState('submitting')
     if (elapsedInterval.current) clearInterval(elapsedInterval.current)
+    if (sKey) clearSavedSession(sKey)
     setSubmitError('')
     try {
-      // Wait for submission doc to be created (created in useEffect when test starts)
       let subId = submissionId
       if (!subId) {
-        // Fallback: create inline if useEffect hasn't run yet
         const subRef = await addDoc(collection(db, 'submissions'), {
           testId, studentId: user!.uid, studentUsername: user!.username,
           startedAt: serverTimestamp(), submittedAt: null,
@@ -165,24 +229,15 @@ export default function TestPage() {
         })
         subId = subRef.id
       }
-
-      // Prepare answers payload (convert Timestamp refs)
       const answersPayload: Record<string, { selectedOptions: string[]; timeSpent: number }> = {}
       for (const [qId, ans] of Object.entries(answers)) {
         answersPayload[qId] = { selectedOptions: ans.selectedOptions, timeSpent: ans.timeSpent }
       }
-
       const idToken = await firebaseUser!.getIdToken()
       const res = await fetch('/api/submit-test', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${idToken}` },
-        body: JSON.stringify({
-          submissionId: subId,
-          testId,
-          answers: answersPayload,
-          totalTimeSpent: totalElapsed,
-          autoSubmit,
-        }),
+        body: JSON.stringify({ submissionId: subId, testId, answers: answersPayload, totalTimeSpent: totalElapsed, autoSubmit }),
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error)
@@ -193,26 +248,7 @@ export default function TestPage() {
     }
   }
 
-  function handleTimeUp() {
-    submitTest(true)
-  }
-
-  // Create submission when test starts to track in-progress
-  useEffect(() => {
-    if (state === 'in-progress' && !submissionId && !submissionCreating.current && user) {
-      submissionCreating.current = true
-      addDoc(collection(db, 'submissions'), {
-        testId,
-        studentId: user.uid,
-        studentUsername: user.username,
-        startedAt: serverTimestamp(),
-        submittedAt: null,
-        status: 'in-progress',
-        answers: {},
-        timeOverflow: 0,
-      }).then(ref => setSubmissionId(ref.id))
-    }
-  }, [state, user])
+  // ─── Render states ─────────────────────────────────────────────────────────
 
   if (authLoading || state === 'loading') {
     return (
@@ -223,52 +259,80 @@ export default function TestPage() {
   }
 
   if (state === 'instructions' && test) {
-    const totalQs = questions.length
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-        <div className="max-w-2xl w-full">
-          <div className="card p-8">
-            <div className="text-center mb-6">
-              <h1 className="text-2xl font-bold text-gray-900">{test.title}</h1>
-              <p className="text-gray-500 mt-2">{test.description}</p>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4 mb-6">
-              {[
-                { label: 'Duration', value: test.duration > 0 ? `${test.duration} minutes` : 'No time limit' },
-                { label: 'Total Questions', value: totalQs },
-                { label: 'Total Marks', value: test.totalMarks },
-                { label: 'Passing Marks', value: test.passingMarks },
-                { label: 'Sections', value: sections.length },
-                { label: 'On Time Up', value: test.endingMode === 'immediate' ? 'Auto Submit' : 'Overtime allowed' },
-              ].map(i => (
-                <div key={i.label} className="bg-gray-50 rounded-lg p-3">
-                  <p className="text-xs text-gray-500">{i.label}</p>
-                  <p className="font-semibold text-gray-900 mt-0.5">{i.value}</p>
-                </div>
-              ))}
-            </div>
-
-            {test.instructions && (
-              <div className="bg-blue-50 rounded-lg p-4 mb-6">
-                <h3 className="font-medium text-blue-900 mb-2">Instructions</h3>
-                <p className="text-sm text-blue-800 whitespace-pre-line">{test.instructions}</p>
+        <div className="max-w-2xl w-full card p-8">
+          <div className="text-center mb-6">
+            <h1 className="text-2xl font-bold text-gray-900">{test.title}</h1>
+            <p className="text-gray-500 mt-2">{test.description}</p>
+          </div>
+          <div className="grid grid-cols-2 gap-4 mb-6">
+            {[
+              { label: 'Duration', value: test.duration > 0 ? `${test.duration} minutes` : 'No time limit' },
+              { label: 'Total Questions', value: questions.length },
+              { label: 'Total Marks', value: test.totalMarks },
+              { label: 'Passing Marks', value: test.passingMarks },
+              { label: 'Sections', value: sections.length },
+              { label: 'On Time Up', value: test.endingMode === 'immediate' ? 'Auto Submit' : 'Overtime allowed' },
+            ].map(i => (
+              <div key={i.label} className="bg-gray-50 rounded-lg p-3">
+                <p className="text-xs text-gray-500">{i.label}</p>
+                <p className="font-semibold text-gray-900 mt-0.5">{i.value}</p>
               </div>
+            ))}
+          </div>
+          {test.instructions && (
+            <div className="bg-blue-50 rounded-lg p-4 mb-6">
+              <h3 className="font-medium text-blue-900 mb-2">Instructions</h3>
+              <p className="text-sm text-blue-800 whitespace-pre-line">{test.instructions}</p>
+            </div>
+          )}
+          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
+            <p className="text-sm text-yellow-800">
+              <strong>Important:</strong> Do not refresh or close the browser during the test.
+              Your answers are saved automatically. Once submitted, you cannot change your answers.
+            </p>
+          </div>
+          <div className="flex items-center gap-3">
+            <button onClick={() => router.back()} className="btn-secondary flex-1">Go Back</button>
+            <button onClick={startTest} className="btn-primary flex-1 py-3 text-base">Start Test</button>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  if (state === 'resume-prompt' && test && examEndTime) {
+    const remainingSecs = Math.max(0, Math.round((examEndTime - Date.now()) / 1000))
+    const answeredCount = Object.values(answers).filter(a => a.selectedOptions.length > 0).length
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+        <div className="max-w-lg w-full card p-8 text-center">
+          <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg className="w-8 h-8 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+          </div>
+          <h1 className="text-xl font-bold text-gray-900 mb-2">Exam In Progress</h1>
+          <p className="text-gray-600 mb-2">
+            You have an active session for <strong>{test.title}</strong>.
+          </p>
+          <p className="text-gray-500 text-sm mb-6">
+            Your answers are saved. You have answered <strong>{answeredCount}</strong> of <strong>{questions.length}</strong> questions.
+            {test.duration > 0 && (
+              <> Time remaining: <strong className="text-blue-600">{formatSeconds(remainingSecs)}</strong></>
             )}
-
-            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
-              <p className="text-sm text-yellow-800">
-                <strong>Important:</strong> Do not refresh or close the browser during the test.
-                Your answers are tracked automatically. Once submitted, you cannot change your answers.
-              </p>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <button onClick={() => router.back()} className="btn-secondary flex-1">Go Back</button>
-              <button onClick={startTest} className="btn-primary flex-1 py-3 text-base">
-                Start Test
-              </button>
-            </div>
+          </p>
+          <div className="space-y-3">
+            <button onClick={resumeTest} className="btn-primary w-full py-3">
+              Continue Exam
+            </button>
+            <button
+              onClick={() => { setConfirmSubmit(true); resumeTest() }}
+              className="btn-secondary w-full text-sm text-gray-500"
+            >
+              Submit Current Answers & End
+            </button>
           </div>
         </div>
       </div>
@@ -291,7 +355,9 @@ export default function TestPage() {
 
   const totalAnswered = Object.values(answers).filter(a => a.selectedOptions.length > 0).length
   const totalQCount = questions.length
-  const globalQIdx = sections.slice(0, activeSectionIdx).reduce((acc, sec) => acc + questions.filter(q => q.sectionId === sec.id).length, 0) + activeQIdx + 1
+  const globalQIdx = sections.slice(0, activeSectionIdx).reduce(
+    (acc, sec) => acc + questions.filter(q => q.sectionId === sec.id).length, 0
+  ) + activeQIdx + 1
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
@@ -302,24 +368,29 @@ export default function TestPage() {
           <p className="text-xs text-gray-400">Q{globalQIdx} of {totalQCount} · {totalAnswered} answered</p>
         </div>
         <div className="flex items-center gap-4">
-          {test.duration > 0 && (
+          {test.duration > 0 && examEndTime && (
             <Timer
-              durationSeconds={test.duration * 60}
+              endTime={examEndTime}
               endingMode={test.endingMode}
-              onTimeUp={handleTimeUp}
+              onTimeUp={() => submitTest(true)}
             />
           )}
-          <button
-            onClick={() => setConfirmSubmit(true)}
-            className="btn-primary text-sm py-2"
-          >
+          {test.duration === 0 && (
+            <div className="flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-lg">
+              <svg className="w-4 h-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span className="font-mono text-gray-600 text-sm font-medium">No time limit</span>
+            </div>
+          )}
+          <button onClick={() => setConfirmSubmit(true)} className="btn-primary text-sm py-2">
             Submit Test
           </button>
         </div>
       </div>
 
       <div className="flex flex-1 overflow-hidden">
-        {/* Left: Navigator */}
+        {/* Sidebar: Navigator */}
         <div className="w-72 bg-white border-r border-gray-200 overflow-y-auto flex-shrink-0">
           <div className="p-4">
             <p className="text-xs font-medium text-gray-500 uppercase tracking-wide mb-3">Sections</p>
@@ -360,17 +431,10 @@ export default function TestPage() {
                 </div>
               )
             })}
-
             <div className="mt-4 p-3 bg-gray-50 rounded-lg text-xs text-gray-500 space-y-1">
-              <div className="flex items-center gap-2">
-                <span className="w-4 h-4 bg-green-500 rounded" /> Answered
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="w-4 h-4 bg-gray-100 border border-gray-300 rounded" /> Not answered
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="w-4 h-4 bg-gray-100 border-2 border-blue-500 rounded" /> Current
-              </div>
+              <div className="flex items-center gap-2"><span className="w-4 h-4 bg-green-500 rounded" /> Answered</div>
+              <div className="flex items-center gap-2"><span className="w-4 h-4 bg-gray-100 border border-gray-300 rounded" /> Not answered</div>
+              <div className="flex items-center gap-2"><span className="w-4 h-4 bg-gray-100 border-2 border-blue-500 rounded" /> Current</div>
             </div>
           </div>
         </div>
@@ -410,9 +474,7 @@ export default function TestPage() {
                     const isSelected = answers[currentQ.id]?.selectedOptions.includes(opt.id)
                     return (
                       <label key={opt.id} className={`flex items-center gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all
-                        ${isSelected
-                          ? 'border-blue-500 bg-blue-50'
-                          : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'}`}>
+                        ${isSelected ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'}`}>
                         <div className={`w-5 h-5 rounded-${currentQ.type === 'multiple' ? 'md' : 'full'} border-2 flex items-center justify-center flex-shrink-0
                           ${isSelected ? 'border-blue-500 bg-blue-500' : 'border-gray-300'}`}>
                           {isSelected && (
@@ -441,7 +503,11 @@ export default function TestPage() {
               </div>
 
               <div className="flex items-center justify-between">
-                <button onClick={prevQuestion} disabled={activeSectionIdx === 0 && activeQIdx === 0} className="btn-secondary gap-2">
+                <button
+                  onClick={prevQuestion}
+                  disabled={activeSectionIdx === 0 && activeQIdx === 0}
+                  className="btn-secondary gap-2"
+                >
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                   </svg>

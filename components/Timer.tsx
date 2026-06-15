@@ -1,47 +1,39 @@
 'use client'
 
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { formatSeconds } from '@/lib/utils'
 import { EndingMode } from '@/lib/types'
 
 interface TimerProps {
-  durationSeconds: number
+  endTime: number       // absolute unix ms when the exam expires
   endingMode: EndingMode
   onTimeUp?: () => void
-  onTick?: (remaining: number) => void
 }
 
-export default function Timer({ durationSeconds, endingMode, onTimeUp, onTick }: TimerProps) {
-  const [remaining, setRemaining] = useState(durationSeconds)
-  const [fired, setFired] = useState(false)
+export default function Timer({ endTime, endingMode, onTimeUp }: TimerProps) {
+  const [remaining, setRemaining] = useState(() => Math.round((endTime - Date.now()) / 1000))
+  const firedRef = useRef(false)
+  const onTimeUpRef = useRef(onTimeUp)
+  const endingModeRef = useRef(endingMode)
+
+  // Keep latest callbacks in refs so the interval never needs to restart
+  useEffect(() => { onTimeUpRef.current = onTimeUp }, [onTimeUp])
+  useEffect(() => { endingModeRef.current = endingMode }, [endingMode])
 
   useEffect(() => {
+    firedRef.current = false
     const interval = setInterval(() => {
-      setRemaining((prev) => {
-        const next = prev - 1
-        onTick?.(next)
-        if (next === 0 && !fired) {
-          setFired(true)
-          if (endingMode === 'immediate') {
-            onTimeUp?.()
-          }
+      const rem = Math.round((endTime - Date.now()) / 1000)
+      setRemaining(rem)
+      if (rem <= 0 && !firedRef.current) {
+        firedRef.current = true
+        if (endingModeRef.current === 'immediate') {
+          onTimeUpRef.current?.()
         }
-        return next
-      })
-    }, 1000)
+      }
+    }, 500)
     return () => clearInterval(interval)
-  }, [endingMode, fired, onTimeUp, onTick])
-
-  if (durationSeconds === 0) {
-    return (
-      <div className="flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-lg">
-        <svg className="w-4 h-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-        <span className="font-mono text-gray-600 text-sm font-medium">No time limit</span>
-      </div>
-    )
-  }
+  }, [endTime]) // only restart if the end-time itself changes (e.g. on resume)
 
   const isOvertime = remaining < 0
   const isWarning = remaining > 0 && remaining <= 300
@@ -56,9 +48,14 @@ export default function Timer({ durationSeconds, endingMode, onTimeUp, onTick }:
       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
-      {isOvertime && <span className="text-xs font-normal mr-1">+{formatSeconds(Math.abs(remaining))}</span>}
-      {!isOvertime && <span>{formatSeconds(remaining)}</span>}
-      {isOvertime && <span className="text-xs font-normal">(overtime)</span>}
+      {isOvertime ? (
+        <>
+          <span className="text-xs font-normal mr-1">+{formatSeconds(Math.abs(remaining))}</span>
+          <span className="text-xs font-normal">(overtime)</span>
+        </>
+      ) : (
+        <span>{formatSeconds(remaining)}</span>
+      )}
     </div>
   )
 }

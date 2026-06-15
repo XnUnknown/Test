@@ -70,6 +70,7 @@ export default function TestPage() {
 
   useEffect(() => {
     if (!user || !sKey) return
+    const key = sKey  // narrowed to string for use inside async closure
     async function load() {
       const testSnap = await getDoc(doc(db, 'tests', testId))
       if (!testSnap.exists() || !testSnap.data().isPublished) {
@@ -89,7 +90,7 @@ export default function TestPage() {
       setQuestions(qs)
 
       // Check localStorage for an in-progress session
-      const saved = loadSession(sKey)
+      const saved = loadSession(key)
       if (saved) {
         const endTime = saved.startedAt + testData.duration * 60 * 1000
         // Merge saved answers with current question list to handle new questions added by admin
@@ -145,6 +146,7 @@ export default function TestPage() {
     if (state === 'in-progress' && !submissionId && !submissionCreating.current && user && sKey && examEndTime && test) {
       submissionCreating.current = true
       const startedAt = examEndTime - test.duration * 60 * 1000
+      const k = sKey  // capture for .then() closure
       addDoc(collection(db, 'submissions'), {
         testId,
         studentId: user.uid,
@@ -156,7 +158,7 @@ export default function TestPage() {
         timeOverflow: 0,
       }).then(ref => {
         setSubmissionId(ref.id)
-        saveSession(sKey, { submissionId: ref.id, answers, startedAt })
+        saveSession(k, { submissionId: ref.id, answers, startedAt })
       })
     }
   }, [state, user])

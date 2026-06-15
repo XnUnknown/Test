@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { collection, getDocs, query, where, orderBy } from 'firebase/firestore'
+import { collection, getDocs, query, where } from 'firebase/firestore'
 import { db } from '@/lib/firebase'
 import { useAuth } from '@/contexts/AuthContext'
 import { useRouter } from 'next/navigation'
@@ -26,10 +26,18 @@ export default function StudentDashboard() {
     async function load() {
       const [testsSnap, resultsSnap] = await Promise.all([
         getDocs(query(collection(db, 'tests'), where('isPublished', '==', true))),
-        getDocs(query(collection(db, 'results'), where('studentId', '==', user!.uid), orderBy('submittedAt', 'desc'))),
+        getDocs(query(collection(db, 'results'), where('studentId', '==', user!.uid))),
       ])
       setPublishedTests(testsSnap.docs.map(d => ({ id: d.id, ...d.data() } as Test)))
-      setResults(resultsSnap.docs.map(d => ({ id: d.id, ...d.data() } as Result)))
+      setResults(
+        resultsSnap.docs
+          .map(d => ({ id: d.id, ...d.data() } as Result))
+          .sort((a, b) => {
+            const aTime = (a.submittedAt as any)?.toMillis?.() || 0
+            const bTime = (b.submittedAt as any)?.toMillis?.() || 0
+            return bTime - aTime
+          })
+      )
       setLoading(false)
     }
     load()

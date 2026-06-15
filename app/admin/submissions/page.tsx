@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { collection, getDocs, query, orderBy, doc, getDoc } from 'firebase/firestore'
+import { collection, getDocs, query, doc, getDoc } from 'firebase/firestore'
 import { db } from '@/lib/firebase'
 import { Submission, Result, Test } from '@/lib/types'
 import Link from 'next/link'
@@ -21,7 +21,7 @@ export default function SubmissionsPage() {
   useEffect(() => {
     async function load() {
       const [subsSnap, testsSnap, resultsSnap] = await Promise.all([
-        getDocs(query(collection(db, 'submissions'), orderBy('submittedAt', 'desc'))),
+        getDocs(collection(db, 'submissions')),
         getDocs(collection(db, 'tests')),
         getDocs(collection(db, 'results')),
       ])
@@ -34,7 +34,11 @@ export default function SubmissionsPage() {
         result: resultsMap.get(d.id),
         testTitle: testsMap.get(d.data().testId)?.title,
       } as SubWithResult))
-      setSubmissions(subs)
+      setSubmissions(subs.sort((a, b) => {
+        const aTime = (a.submittedAt as any)?.toMillis?.() || 0
+        const bTime = (b.submittedAt as any)?.toMillis?.() || 0
+        return bTime - aTime
+      }))
       setLoading(false)
     }
     load()

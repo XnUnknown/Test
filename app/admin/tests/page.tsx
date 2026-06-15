@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { collection, getDocs, deleteDoc, doc, orderBy, query } from 'firebase/firestore'
+import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore'
 import { db } from '@/lib/firebase'
 import { Test } from '@/lib/types'
 import { generateTestLink } from '@/lib/utils'
@@ -17,8 +17,12 @@ export default function TestsPage() {
   }, [])
 
   async function loadTests() {
-    const snap = await getDocs(query(collection(db, 'tests'), orderBy('createdAt', 'desc')))
-    setTests(snap.docs.map(d => ({ id: d.id, ...d.data() } as Test)))
+    const snap = await getDocs(collection(db, 'tests'))
+    setTests(
+      snap.docs
+        .map(d => ({ id: d.id, ...d.data() } as Test))
+        .sort((a: any, b: any) => (b.createdAt?.toMillis?.() || 0) - (a.createdAt?.toMillis?.() || 0))
+    )
     setLoading(false)
   }
 

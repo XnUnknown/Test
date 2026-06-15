@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import {
   doc, getDoc, updateDoc, collection, getDocs, addDoc,
-  deleteDoc, writeBatch, query, where, orderBy, serverTimestamp
+  deleteDoc, writeBatch, query, where, serverTimestamp
 } from 'firebase/firestore'
 import { db } from '@/lib/firebase'
 import { Test, Section, Question, JSONImportSchema } from '@/lib/types'
@@ -42,16 +42,25 @@ export default function TestDetailPage() {
   }, [testId])
 
   async function loadAll() {
-    const [testSnap, sectionsSnap, questionsSnap] = await Promise.all([
-      getDoc(doc(db, 'tests', testId)),
-      getDocs(query(collection(db, 'sections'), where('testId', '==', testId), orderBy('order'))),
-      getDocs(query(collection(db, 'questions'), where('testId', '==', testId))),
-    ])
-    if (!testSnap.exists()) { router.push('/admin/tests'); return }
-    setTest({ id: testSnap.id, ...testSnap.data() } as Test)
-    setSections(sectionsSnap.docs.map(d => ({ id: d.id, ...d.data() } as Section)))
-    setQuestions(questionsSnap.docs.map(d => ({ id: d.id, ...d.data() } as Question)))
-    setLoading(false)
+    try {
+      const [testSnap, sectionsSnap, questionsSnap] = await Promise.all([
+        getDoc(doc(db, 'tests', testId)),
+        getDocs(query(collection(db, 'sections'), where('testId', '==', testId))),
+        getDocs(query(collection(db, 'questions'), where('testId', '==', testId))),
+      ])
+      if (!testSnap.exists()) { router.push('/admin/tests'); return }
+      setTest({ id: testSnap.id, ...testSnap.data() } as Test)
+      setSections(
+        sectionsSnap.docs
+          .map(d => ({ id: d.id, ...d.data() } as Section))
+          .sort((a, b) => a.order - b.order)
+      )
+      setQuestions(questionsSnap.docs.map(d => ({ id: d.id, ...d.data() } as Question)))
+    } catch (err: any) {
+      console.error('Failed to load test:', err)
+    } finally {
+      setLoading(false)
+    }
   }
 
   async function togglePublish() {

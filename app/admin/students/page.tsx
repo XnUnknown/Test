@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState, FormEvent } from 'react'
-import { collection, getDocs, query, where, orderBy } from 'firebase/firestore'
+import { collection, getDocs, query, where } from 'firebase/firestore'
 import { db } from '@/lib/firebase'
 import { User } from '@/lib/types'
 
@@ -23,8 +23,16 @@ export default function StudentsPage() {
   useEffect(() => { loadStudents() }, [])
 
   async function loadStudents() {
-    const snap = await getDocs(query(collection(db, 'users'), where('role', '==', 'student'), orderBy('createdAt', 'desc')))
-    setStudents(snap.docs.map(d => ({ uid: d.id, ...d.data() } as User)))
+    const snap = await getDocs(query(collection(db, 'users'), where('role', '==', 'student')))
+    setStudents(
+      snap.docs
+        .map(d => ({ uid: d.id, ...d.data() } as User))
+        .sort((a, b) => {
+          const aTime = (a.createdAt as any)?.toMillis?.() || 0
+          const bTime = (b.createdAt as any)?.toMillis?.() || 0
+          return bTime - aTime
+        })
+    )
     setLoading(false)
   }
 

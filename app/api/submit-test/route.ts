@@ -106,7 +106,7 @@ export async function POST(req: NextRequest) {
     }
 
     // For sections with attemptLimit: keep only the best N attempted answers
-    for (const [sectionId, section] of sectionMap.entries()) {
+    for (const [sectionId, section] of Array.from(sectionMap.entries())) {
       const s = section as any
       if (!s.attemptLimit) continue
       const limit: number = s.attemptLimit

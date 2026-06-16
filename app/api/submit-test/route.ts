@@ -42,6 +42,8 @@ export async function POST(req: NextRequest) {
     let obtainedMarks = 0
     const questionResults: Record<string, any> = {}
     const sectionResults: Record<string, any> = {}
+    // Track per-question result for optional-section recompute
+    const sectionQuestionResults: Record<string, { qId: string; marks: number; marksObtained: number }[]> = {}
 
     for (const qDoc of questionsSnap.docs) {
       const q = qDoc.data()
@@ -98,6 +100,33 @@ export async function POST(req: NextRequest) {
       sectionResults[sectionId].obtainedMarks += Math.round(marksObtained * 100) / 100
       sectionResults[sectionId].totalQuestions += 1
       if (selected.length > 0) sectionResults[sectionId].questionsAttempted += 1
+
+      if (!sectionQuestionResults[sectionId]) sectionQuestionResults[sectionId] = []
+      sectionQuestionResults[sectionId].push({ qId, marks: q.marks, marksObtained })
+    }
+
+    // For sections with attemptLimit: keep only the best N attempted answers
+    for (const [sectionId, section] of sectionMap.entries()) {
+      const s = section as any
+      if (!s.attemptLimit) continue
+      const limit: number = s.attemptLimit
+      const qResults = sectionQuestionResults[sectionId] || []
+      const attempted = qResults.filter(r => (answers[r.qId]?.selectedOptions?.length || 0) > 0)
+      if (attempted.length <= limit) continue
+
+      // Sort by marks obtained descending; drop lowest extras
+      attempted.sort((a, b) => b.marksObtained - a.marksObtained)
+      const dropped = attempted.slice(limit) // beyond the best N
+
+      for (const d of dropped) {
+        const old = d.marksObtained
+        obtainedMarks -= old
+        sectionResults[sectionId].obtainedMarks -= Math.round(old * 100) / 100
+        sectionResults[sectionId].questionsAttempted -= 1
+        // Mark this question as excluded in results
+        questionResults[d.qId].marksObtained = 0
+        questionResults[d.qId].excludedByLimit = true
+      }
     }
 
     const finalMarks = Math.max(0, Math.round(obtainedMarks * 100) / 100)

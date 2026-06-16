@@ -44,6 +44,7 @@ export interface Section {
   description: string
   order: number
   createdAt: Timestamp
+  attemptLimit?: number
 }
 
 export interface Test {
@@ -117,6 +118,7 @@ export interface JSONImportSchema {
     id?: string
     title: string
     description?: string
+    attemptLimit?: number
     questions: {
       type: QuestionType
       text: string

@@ -438,6 +438,7 @@ export default function TestPage() {
             {sections.map((sec, si) => {
               const secQs = questions.filter(q => q.sectionId === sec.id)
               const secAnswered = secQs.filter(q => answers[q.id]?.selectedOptions.length > 0).length
+              const overLimit = sec.attemptLimit != null && secAnswered > sec.attemptLimit
               return (
                 <div key={sec.id} className="mb-4">
                   <button
@@ -445,10 +446,19 @@ export default function TestPage() {
                     className={`w-full text-left text-sm font-medium px-3 py-2 rounded-lg mb-2 transition-colors
                       ${activeSectionIdx === si ? 'bg-blue-600 text-white' : 'text-gray-700 hover:bg-gray-100'}`}
                   >
-                    {sec.title}
-                    <span className={`ml-2 text-xs ${activeSectionIdx === si ? 'text-blue-200' : 'text-gray-400'}`}>
-                      {secAnswered}/{secQs.length}
-                    </span>
+                    <div className="flex items-center justify-between">
+                      <span>{sec.title}</span>
+                      <span className={`text-xs ml-2 ${activeSectionIdx === si ? 'text-blue-200' : overLimit ? 'text-red-500 font-semibold' : 'text-gray-400'}`}>
+                        {sec.attemptLimit != null
+                          ? `${secAnswered}/${sec.attemptLimit} (limit)`
+                          : `${secAnswered}/${secQs.length}`}
+                      </span>
+                    </div>
+                    {sec.attemptLimit != null && overLimit && (
+                      <p className={`text-xs mt-0.5 ${activeSectionIdx === si ? 'text-red-200' : 'text-red-500'}`}>
+                        Exceeds limit — best {sec.attemptLimit} will be scored
+                      </p>
+                    )}
                   </button>
                   {activeSectionIdx === si && (
                     <div className="grid grid-cols-5 gap-1.5 px-2">

@@ -154,11 +154,13 @@ export default function TestDetailPage() {
         if (!sectionId) {
           const sRef = doc(collection(db, 'sections'))
           sectionId = sRef.id
-          batch.set(sRef, {
+          const sectionDoc: Record<string, any> = {
             testId, title: sec.title, description: sec.description || '',
             order: sections.length + si, createdAt: serverTimestamp(),
-          })
-          newSections.push({ id: sectionId, testId, title: sec.title, description: sec.description || '', order: sections.length + si } as Section)
+          }
+          if (sec.attemptLimit != null) sectionDoc.attemptLimit = sec.attemptLimit
+          batch.set(sRef, sectionDoc)
+          newSections.push({ id: sectionId, testId, title: sec.title, description: sec.description || '', order: sections.length + si, ...(sec.attemptLimit != null ? { attemptLimit: sec.attemptLimit } : {}) } as Section)
         }
 
         for (let qi = 0; qi < (sec.questions || []).length; qi++) {

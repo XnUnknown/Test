@@ -1,0 +1,1451 @@
+{
+  "sections": [
+    {
+      "title": "Physics - Section A",
+      "description": "Compulsory section. Attempt all 45 questions. +4 for correct, -1 for incorrect.",
+      "questions": [
+        {
+          "type": "single",
+          "text": "Two point charges +q and +4q are placed at a distance r apart. The ratio of forces experienced by the two charges is:",
+          "options": [{"id":"a","text":"1:4"},{"id":"b","text":"4:1"},{"id":"c","text":"1:1"},{"id":"d","text":"2:1"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "By Newton's third law, the forces on both charges are equal and opposite, so the ratio is 1:1."
+        },
+        {
+          "type": "single",
+          "text": "A uniformly charged sphere of radius R has total charge Q. The electric field at an interior point at distance r (r < R) from the centre is:",
+          "options": [{"id":"a","text":"Qr / 4πε₀R³"},{"id":"b","text":"Q / 4πε₀r²"},{"id":"c","text":"Qr² / 4πε₀R³"},{"id":"d","text":"Zero everywhere inside"}],
+          "correctAnswers": ["a"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "By Gauss's law, E = Qr / 4πε₀R³ inside a uniformly charged sphere."
+        },
+        {
+          "type": "single",
+          "text": "The work done in moving a charge q from point A to B, both lying on the same equipotential surface of potential V, is:",
+          "options": [{"id":"a","text":"qV"},{"id":"b","text":"2qV"},{"id":"c","text":"Zero"},{"id":"d","text":"qV²"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "No work is done in moving a charge along an equipotential surface since potential difference is zero."
+        },
+        {
+          "type": "single",
+          "text": "Three capacitors of capacitances 2 μF, 3 μF, and 6 μF are connected in series. The equivalent capacitance is:",
+          "options": [{"id":"a","text":"11 μF"},{"id":"b","text":"1 μF"},{"id":"c","text":"0.5 μF"},{"id":"d","text":"6 μF"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "1/C = 1/2 + 1/3 + 1/6 = 3/6 + 2/6 + 1/6 = 1. Therefore C = 1 μF."
+        },
+        {
+          "type": "single",
+          "text": "A parallel plate capacitor with air has capacitance C. If the entire space is filled with dielectric of constant K = 4 and plate separation is doubled, the new capacitance is:",
+          "options": [{"id":"a","text":"C/2"},{"id":"b","text":"2C"},{"id":"c","text":"4C"},{"id":"d","text":"8C"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "C_new = Kε₀A/(2d) = 4 × (ε₀A/d) / 2 = 4C/2 = 2C."
+        },
+        {
+          "type": "single",
+          "text": "The energy stored in a capacitor of capacitance C charged to voltage V is:",
+          "options": [{"id":"a","text":"CV"},{"id":"b","text":"CV²"},{"id":"c","text":"CV²/2"},{"id":"d","text":"C²V/2"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Energy = ½CV²."
+        },
+        {
+          "type": "single",
+          "text": "A wire of resistance 4 Ω is bent into a circle. The effective resistance between the two ends of a diameter is:",
+          "options": [{"id":"a","text":"4 Ω"},{"id":"b","text":"2 Ω"},{"id":"c","text":"1 Ω"},{"id":"d","text":"8 Ω"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Each semicircle has resistance 2 Ω. They are in parallel: R = (2×2)/(2+2) = 1 Ω."
+        },
+        {
+          "type": "single",
+          "text": "A cell of EMF 2 V and internal resistance 0.5 Ω is connected to an external resistance of 1.5 Ω. The terminal voltage of the cell is:",
+          "options": [{"id":"a","text":"2.0 V"},{"id":"b","text":"1.8 V"},{"id":"c","text":"1.5 V"},{"id":"d","text":"1.2 V"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Current I = E/(r+R) = 2/(0.5+1.5) = 1 A. Terminal voltage = E − Ir = 2 − 1×0.5 = 1.5 V."
+        },
+        {
+          "type": "single",
+          "text": "Two cells with EMF E₁ = 2 V, internal resistance r₁ = 1 Ω and E₂ = 4 V, r₂ = 2 Ω are connected in parallel. The equivalent EMF of the combination is:",
+          "options": [{"id":"a","text":"3 V"},{"id":"b","text":"8/3 V"},{"id":"c","text":"2 V"},{"id":"d","text":"4 V"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "E_eq = (E₁r₂ + E₂r₁)/(r₁+r₂) = (2×2 + 4×1)/(1+2) = 8/3 V."
+        },
+        {
+          "type": "single",
+          "text": "In a Wheatstone bridge, the condition for balance (no current through galvanometer) is:",
+          "options": [{"id":"a","text":"P/Q = S/R"},{"id":"b","text":"P/Q = R/S"},{"id":"c","text":"P×Q = R×S"},{"id":"d","text":"P+Q = R+S"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "The Wheatstone bridge is balanced when P/Q = R/S, so no current flows through the galvanometer."
+        },
+        {
+          "type": "single",
+          "text": "The magnetic field at the centre of a circular loop of radius r carrying current I is:",
+          "options": [{"id":"a","text":"μ₀I/2r"},{"id":"b","text":"μ₀I/r"},{"id":"c","text":"μ₀I/4r"},{"id":"d","text":"2μ₀I/r"}],
+          "correctAnswers": ["a"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "B = μ₀I/2r at the centre of a circular loop."
+        },
+        {
+          "type": "single",
+          "text": "A charged particle enters a uniform magnetic field perpendicular to it. The path traced by the particle is:",
+          "options": [{"id":"a","text":"Straight line"},{"id":"b","text":"Parabola"},{"id":"c","text":"Circle"},{"id":"d","text":"Helix"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "The magnetic force is always perpendicular to velocity, providing centripetal acceleration; the path is circular."
+        },
+        {
+          "type": "single",
+          "text": "The SI unit of magnetic flux is:",
+          "options": [{"id":"a","text":"Tesla (T)"},{"id":"b","text":"Weber (Wb)"},{"id":"c","text":"Henry (H)"},{"id":"d","text":"Oersted"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Magnetic flux is measured in Weber (Wb). 1 Wb = 1 T·m²."
+        },
+        {
+          "type": "single",
+          "text": "The torque experienced by a magnetic dipole of moment M in a uniform magnetic field B at angle θ is:",
+          "options": [{"id":"a","text":"MB cosθ"},{"id":"b","text":"MB sinθ"},{"id":"c","text":"MB tanθ"},{"id":"d","text":"MB/sinθ"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Torque τ = MB sinθ (or vectorially τ = M × B)."
+        },
+        {
+          "type": "single",
+          "text": "According to Faraday's law, the magnitude of induced EMF in a coil is proportional to:",
+          "options": [{"id":"a","text":"Rate of change of magnetic flux"},{"id":"b","text":"Magnitude of magnetic field"},{"id":"c","text":"Area of the coil"},{"id":"d","text":"Resistance of the coil"}],
+          "correctAnswers": ["a"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Faraday's law: |EMF| = |dΦ/dt|, i.e., proportional to rate of change of magnetic flux."
+        },
+        {
+          "type": "single",
+          "text": "The mutual inductance between two coils is 1 H. If the current in one coil changes at a rate of 3 A/s, the EMF induced in the other coil is:",
+          "options": [{"id":"a","text":"0.33 V"},{"id":"b","text":"1 V"},{"id":"c","text":"3 V"},{"id":"d","text":"6 V"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "EMF = M × (dI/dt) = 1 × 3 = 3 V."
+        },
+        {
+          "type": "single",
+          "text": "In a series LCR AC circuit, the power factor is:",
+          "options": [{"id":"a","text":"R/Z"},{"id":"b","text":"Z/R"},{"id":"c","text":"XL/Z"},{"id":"d","text":"XC/R"}],
+          "correctAnswers": ["a"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Power factor = cos φ = R/Z, where Z is the total impedance."
+        },
+        {
+          "type": "single",
+          "text": "At resonance in a series LCR circuit:",
+          "options": [{"id":"a","text":"Current is minimum"},{"id":"b","text":"Impedance is maximum"},{"id":"c","text":"Inductive reactance equals capacitive reactance"},{"id":"d","text":"Power factor is zero"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "At resonance, XL = XC, impedance Z = R (minimum), current is maximum, and power factor = 1."
+        },
+        {
+          "type": "single",
+          "text": "A ray of light passes from glass (n = 1.5) to water (n = 1.33). The critical angle for total internal reflection is approximately:",
+          "options": [{"id":"a","text":"sin⁻¹(0.67)"},{"id":"b","text":"sin⁻¹(0.89)"},{"id":"c","text":"sin⁻¹(1.13)"},{"id":"d","text":"sin⁻¹(0.50)"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "sin(C) = n₂/n₁ = 1.33/1.5 ≈ 0.887 ≈ 0.89. So C = sin⁻¹(0.89)."
+        },
+        {
+          "type": "single",
+          "text": "An object is placed 20 cm in front of a concave mirror of focal length 15 cm. The image distance is:",
+          "options": [{"id":"a","text":"+60 cm (behind the mirror)"},{"id":"b","text":"−60 cm (in front of the mirror)"},{"id":"c","text":"−30 cm"},{"id":"d","text":"+30 cm"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Using 1/v + 1/u = 1/f with u = −20, f = −15: 1/v = −1/15 + 1/20 = −1/60. So v = −60 cm (real, in front of mirror)."
+        },
+        {
+          "type": "single",
+          "text": "In Young's double slit experiment, slit separation is 1 mm, wavelength is 500 nm, and the screen is 1 m away. The fringe width is:",
+          "options": [{"id":"a","text":"0.25 mm"},{"id":"b","text":"0.5 mm"},{"id":"c","text":"1.0 mm"},{"id":"d","text":"2.0 mm"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "β = λD/d = (500×10⁻⁹ × 1)/(1×10⁻³) = 5×10⁻⁴ m = 0.5 mm."
+        },
+        {
+          "type": "single",
+          "text": "In Young's double slit experiment, if the wavelength of light is halved and the slit separation is doubled, the fringe width becomes:",
+          "options": [{"id":"a","text":"One-fourth the original"},{"id":"b","text":"Half the original"},{"id":"c","text":"Double the original"},{"id":"d","text":"Same as original"}],
+          "correctAnswers": ["a"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "β = λD/d. New β = (λ/2)D/(2d) = β/4."
+        },
+        {
+          "type": "single",
+          "text": "A convex lens of focal length 10 cm forms a real, inverted, magnified image. The object is placed at:",
+          "options": [{"id":"a","text":"More than 20 cm away"},{"id":"b","text":"Between f and 2f (10–20 cm)"},{"id":"c","text":"At f (10 cm)"},{"id":"d","text":"Less than f (less than 10 cm)"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "A real, inverted, magnified image is formed when the object is between f and 2f."
+        },
+        {
+          "type": "single",
+          "text": "The first law of thermodynamics is essentially a statement of:",
+          "options": [{"id":"a","text":"Conservation of momentum"},{"id":"b","text":"Conservation of charge"},{"id":"c","text":"Conservation of energy"},{"id":"d","text":"Conservation of mass"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "The first law (ΔU = Q − W) is conservation of energy applied to thermodynamic systems."
+        },
+        {
+          "type": "single",
+          "text": "For an ideal gas undergoing an adiabatic process:",
+          "options": [{"id":"a","text":"ΔQ = 0"},{"id":"b","text":"ΔW = 0"},{"id":"c","text":"ΔU = 0"},{"id":"d","text":"ΔT = 0"}],
+          "correctAnswers": ["a"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "In an adiabatic process, no heat exchange occurs with the surroundings (ΔQ = 0)."
+        },
+        {
+          "type": "single",
+          "text": "A Carnot engine operates between a source at 500 K and a sink at 375 K. Its efficiency is:",
+          "options": [{"id":"a","text":"25%"},{"id":"b","text":"33%"},{"id":"c","text":"75%"},{"id":"d","text":"50%"}],
+          "correctAnswers": ["a"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "η = 1 − T_L/T_H = 1 − 375/500 = 1 − 0.75 = 0.25 = 25%."
+        },
+        {
+          "type": "single",
+          "text": "For an isothermal expansion of an ideal gas, the change in internal energy (ΔU) is:",
+          "options": [{"id":"a","text":"Positive"},{"id":"b","text":"Negative"},{"id":"c","text":"Zero"},{"id":"d","text":"Equal to work done"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "For an ideal gas, internal energy depends only on temperature. Isothermal means constant T, so ΔU = 0."
+        },
+        {
+          "type": "single",
+          "text": "The ratio of specific heats (γ = Cp/Cv) for a diatomic ideal gas is:",
+          "options": [{"id":"a","text":"5/3"},{"id":"b","text":"7/5"},{"id":"c","text":"4/3"},{"id":"d","text":"6/5"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "For a diatomic gas, Cv = 5R/2, Cp = 7R/2, so γ = 7/5 = 1.4."
+        },
+        {
+          "type": "single",
+          "text": "In simple harmonic motion, the velocity of the particle is maximum at the:",
+          "options": [{"id":"a","text":"Extreme positions"},{"id":"b","text":"Mean position"},{"id":"c","text":"Quarter amplitude"},{"id":"d","text":"Three-quarter amplitude"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "In SHM, v = ω√(A²−x²). Velocity is maximum when x = 0 (mean position)."
+        },
+        {
+          "type": "single",
+          "text": "The time period of a simple pendulum is 2 s on Earth (g = 10 m/s²). Its length is approximately:",
+          "options": [{"id":"a","text":"0.5 m"},{"id":"b","text":"1.0 m"},{"id":"c","text":"2.0 m"},{"id":"d","text":"0.25 m"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "T = 2π√(L/g); L = g(T/2π)² = 10×(2/2π)² = 10×(1/π²) ≈ 10/9.87 ≈ 1.01 m ≈ 1 m."
+        },
+        {
+          "type": "single",
+          "text": "A projectile is launched at 45° with initial speed v₀. The maximum height reached is:",
+          "options": [{"id":"a","text":"v₀²/g"},{"id":"b","text":"v₀²/2g"},{"id":"c","text":"v₀²/4g"},{"id":"d","text":"v₀²/8g"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "H = v₀²sin²θ/(2g) = v₀²×(1/2)/(2g) = v₀²/4g."
+        },
+        {
+          "type": "single",
+          "text": "The angular momentum of a planet revolving around the sun is conserved because the gravitational force is:",
+          "options": [{"id":"a","text":"Repulsive"},{"id":"b","text":"A central force (directed along the line joining the two bodies)"},{"id":"c","text":"Always perpendicular to velocity"},{"id":"d","text":"Always equal to centripetal force"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Gravitational force is a central force (radial), so torque about the sun is zero, and angular momentum is conserved."
+        },
+        {
+          "type": "single",
+          "text": "The escape velocity from the surface of Earth (radius R, gravitational acceleration g) is:",
+          "options": [{"id":"a","text":"√(gR)"},{"id":"b","text":"√(2gR)"},{"id":"c","text":"2√(gR)"},{"id":"d","text":"gR"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Escape velocity v_e = √(2GM/R) = √(2gR) ≈ 11.2 km/s for Earth."
+        },
+        {
+          "type": "single",
+          "text": "The orbital velocity of a satellite at height h above Earth's surface (Earth's radius R, surface gravity g) is:",
+          "options": [{"id":"a","text":"√(gR²/(R+h))"},{"id":"b","text":"√(g(R+h))"},{"id":"c","text":"√(gR)"},{"id":"d","text":"gR/(R+h)"}],
+          "correctAnswers": ["a"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "v₀ = √(GM/(R+h)) = √(gR²/(R+h)), since GM = gR²."
+        },
+        {
+          "type": "single",
+          "text": "The wave nature of electrons was experimentally verified by:",
+          "options": [{"id":"a","text":"Photoelectric effect"},{"id":"b","text":"Compton effect"},{"id":"c","text":"Davisson and Germer experiment"},{"id":"d","text":"Rutherford scattering"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Davisson and Germer (1927) demonstrated electron diffraction by a nickel crystal, confirming wave nature of electrons."
+        },
+        {
+          "type": "single",
+          "text": "The de Broglie wavelength of a particle of mass m moving with velocity v is:",
+          "options": [{"id":"a","text":"h/mv"},{"id":"b","text":"mv/h"},{"id":"c","text":"h/mv²"},{"id":"d","text":"hmv"}],
+          "correctAnswers": ["a"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "de Broglie wavelength λ = h/p = h/mv."
+        },
+        {
+          "type": "single",
+          "text": "A photon of frequency ν has energy:",
+          "options": [{"id":"a","text":"hν²"},{"id":"b","text":"hν"},{"id":"c","text":"h/ν"},{"id":"d","text":"hν/c"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Energy of a photon E = hν, where h is Planck's constant."
+        },
+        {
+          "type": "single",
+          "text": "In the Bohr model of hydrogen atom, the radius of the nth orbit is proportional to:",
+          "options": [{"id":"a","text":"n"},{"id":"b","text":"n²"},{"id":"c","text":"1/n"},{"id":"d","text":"1/n²"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "rₙ = n²a₀, where a₀ = 0.529 Å is the Bohr radius. Radius is proportional to n²."
+        },
+        {
+          "type": "single",
+          "text": "The energy of an electron in the nth orbit of a hydrogen atom is:",
+          "options": [{"id":"a","text":"−13.6/n eV"},{"id":"b","text":"−13.6n² eV"},{"id":"c","text":"−13.6/n² eV"},{"id":"d","text":"13.6n eV"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Eₙ = −13.6/n² eV. For n = 1 (ground state), E₁ = −13.6 eV."
+        },
+        {
+          "type": "single",
+          "text": "The nuclear radius R is related to mass number A by:",
+          "options": [{"id":"a","text":"R ∝ A"},{"id":"b","text":"R ∝ A^(1/3)"},{"id":"c","text":"R ∝ A²"},{"id":"d","text":"R ∝ A^(2/3)"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "R = R₀A^(1/3), where R₀ ≈ 1.2 × 10⁻¹⁵ m."
+        },
+        {
+          "type": "single",
+          "text": "In a p-n junction diode under forward bias:",
+          "options": [{"id":"a","text":"Depletion region widens"},{"id":"b","text":"Barrier potential increases"},{"id":"c","text":"Current flows easily"},{"id":"d","text":"No current flows"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Forward bias reduces barrier potential and narrows depletion region, allowing current to flow easily."
+        },
+        {
+          "type": "single",
+          "text": "In a common emitter npn transistor amplifier, the current gain β is defined as:",
+          "options": [{"id":"a","text":"IC / IB"},{"id":"b","text":"IB / IC"},{"id":"c","text":"IC / IE"},{"id":"d","text":"IE / IB"}],
+          "correctAnswers": ["a"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "β (DC current gain) = IC / IB in common emitter configuration."
+        },
+        {
+          "type": "single",
+          "text": "The logic gate that gives output HIGH (1) only when all inputs are LOW (0) is:",
+          "options": [{"id":"a","text":"AND gate"},{"id":"b","text":"OR gate"},{"id":"c","text":"NOR gate"},{"id":"d","text":"NAND gate"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "NOR gate output is 1 only when all inputs are 0. It is a universal gate."
+        },
+        {
+          "type": "single",
+          "text": "The frequency range of X-rays in the electromagnetic spectrum is approximately:",
+          "options": [{"id":"a","text":"10⁸ Hz"},{"id":"b","text":"10¹² Hz"},{"id":"c","text":"10¹⁸ Hz"},{"id":"d","text":"10²⁴ Hz"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "X-rays have frequencies in the range 10¹⁶ to 10²⁰ Hz, approximately 10¹⁸ Hz."
+        }
+      ]
+    },
+    {
+      "title": "Physics - Section B",
+      "description": "Attempt any 10 out of 15 questions. Only your best 10 answers will be scored.",
+      "attemptLimit": 10,
+      "questions": [
+        {
+          "type": "single",
+          "text": "A rod of length L rotates in a plane about one end with angular velocity ω. If a uniform magnetic field B exists perpendicular to the plane of rotation, the EMF induced is:",
+          "options": [{"id":"a","text":"BωL²"},{"id":"b","text":"BωL²/2"},{"id":"c","text":"2BωL²"},{"id":"d","text":"BωL/2"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "EMF = ∫₀ᴸ Bω x dx = BωL²/2."
+        },
+        {
+          "type": "single",
+          "text": "A step-down transformer has 500 turns in the primary and 100 turns in the secondary. If the primary voltage is 220 V, the secondary voltage is:",
+          "options": [{"id":"a","text":"1100 V"},{"id":"b","text":"440 V"},{"id":"c","text":"44 V"},{"id":"d","text":"22 V"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Vs/Vp = Ns/Np → Vs = 220 × (100/500) = 44 V."
+        },
+        {
+          "type": "single",
+          "text": "The wavelength range of visible light is approximately:",
+          "options": [{"id":"a","text":"10–400 nm"},{"id":"b","text":"400–700 nm"},{"id":"c","text":"700–1000 nm"},{"id":"d","text":"1–10 nm"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Visible light spans approximately 400 nm (violet) to 700 nm (red)."
+        },
+        {
+          "type": "single",
+          "text": "In Compton scattering, the scattered X-ray has a wavelength _____ the incident X-ray:",
+          "options": [{"id":"a","text":"Smaller than"},{"id":"b","text":"Larger than"},{"id":"c","text":"Equal to"},{"id":"d","text":"Depending on scattering material"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Compton shift Δλ = (h/mₑc)(1−cosφ) ≥ 0. Scattered photon always has longer wavelength."
+        },
+        {
+          "type": "single",
+          "text": "Nuclear fission of ²³⁵U is most effectively initiated by:",
+          "options": [{"id":"a","text":"Fast neutrons"},{"id":"b","text":"Slow (thermal) neutrons"},{"id":"c","text":"Protons"},{"id":"d","text":"Alpha particles"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Slow (thermal) neutrons have much higher fission cross-section for ²³⁵U than fast neutrons."
+        },
+        {
+          "type": "single",
+          "text": "The half-life of a radioactive element is 20 minutes. After 1 hour, the fraction of the original amount remaining is:",
+          "options": [{"id":"a","text":"1/4"},{"id":"b","text":"1/8"},{"id":"c","text":"1/16"},{"id":"d","text":"1/6"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "1 hour = 3 half-lives. Fraction remaining = (1/2)³ = 1/8."
+        },
+        {
+          "type": "single",
+          "text": "For a common base transistor amplifier, the relationship between current gain α and β is:",
+          "options": [{"id":"a","text":"α = β/(1+β)"},{"id":"b","text":"α = β(1+β)"},{"id":"c","text":"α = (1+β)/β"},{"id":"d","text":"α = 1/β"}],
+          "correctAnswers": ["a"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "α = IC/IE; β = IC/IB. Since IE = IC + IB, α = β/(1+β)."
+        },
+        {
+          "type": "single",
+          "text": "Bernoulli's principle is based on:",
+          "options": [{"id":"a","text":"Conservation of mass"},{"id":"b","text":"Conservation of momentum"},{"id":"c","text":"Conservation of energy"},{"id":"d","text":"Newton's third law"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Bernoulli's equation (P + ½ρv² + ρgh = const) is conservation of energy for fluid flow."
+        },
+        {
+          "type": "single",
+          "text": "The speed of sound in air at 0°C is 332 m/s. Its speed at 100°C is approximately:",
+          "options": [{"id":"a","text":"332 m/s"},{"id":"b","text":"366 m/s"},{"id":"c","text":"388 m/s"},{"id":"d","text":"415 m/s"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "v ∝ √T. v₂ = 332 × √(373/273) = 332 × 1.169 ≈ 388 m/s."
+        },
+        {
+          "type": "single",
+          "text": "Beats are produced when two sound waves have:",
+          "options": [{"id":"a","text":"Same frequency and amplitude"},{"id":"b","text":"Slightly different frequencies"},{"id":"c","text":"Very different frequencies"},{"id":"d","text":"Same wavelength but different amplitudes"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Beats arise from superposition of waves of slightly different frequencies. Beat frequency = |f₁ − f₂|."
+        },
+        {
+          "type": "single",
+          "text": "The terminal velocity of a spherical body of radius r falling through a viscous fluid is proportional to:",
+          "options": [{"id":"a","text":"r"},{"id":"b","text":"r²"},{"id":"c","text":"r³"},{"id":"d","text":"1/r"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "By Stokes' law: v_t = 2r²(ρ−σ)g / (9η). Terminal velocity ∝ r²."
+        },
+        {
+          "type": "single",
+          "text": "The bulk modulus of a perfectly rigid (incompressible) body is:",
+          "options": [{"id":"a","text":"Zero"},{"id":"b","text":"Unity"},{"id":"c","text":"Infinity"},{"id":"d","text":"Negative"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Bulk modulus B = −P/(ΔV/V). For incompressible material ΔV → 0, so B → ∞."
+        },
+        {
+          "type": "single",
+          "text": "When a transverse wave travels through a medium, the motion of individual particles is:",
+          "options": [{"id":"a","text":"Along the direction of wave propagation"},{"id":"b","text":"Perpendicular to the direction of wave propagation"},{"id":"c","text":"At 45° to the direction of propagation"},{"id":"d","text":"Random"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "In transverse waves, particle displacement is perpendicular to the direction of wave propagation."
+        },
+        {
+          "type": "single",
+          "text": "The phenomenon of Doppler effect is observed when there is relative motion between:",
+          "options": [{"id":"a","text":"Source and medium only"},{"id":"b","text":"Observer and medium only"},{"id":"c","text":"Source and observer"},{"id":"d","text":"Only the source moves"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Doppler effect occurs whenever there is relative motion between the source and the observer."
+        },
+        {
+          "type": "single",
+          "text": "The surface tension of a liquid generally _____ with increasing temperature:",
+          "options": [{"id":"a","text":"Increases"},{"id":"b","text":"Decreases"},{"id":"c","text":"Remains unchanged"},{"id":"d","text":"First increases then decreases"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Increasing temperature increases kinetic energy of molecules, reducing intermolecular attraction and thus surface tension."
+        }
+      ]
+    },
+    {
+      "title": "Chemistry - Section A",
+      "description": "Compulsory section. Attempt all 45 questions. +4 for correct, -1 for incorrect.",
+      "questions": [
+        {
+          "type": "single",
+          "text": "According to Raoult's law, relative lowering of vapour pressure of a solution is equal to:",
+          "options": [{"id":"a","text":"Mole fraction of solvent"},{"id":"b","text":"Mole fraction of solute"},{"id":"c","text":"Molality of the solution"},{"id":"d","text":"Molarity of the solution"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Raoult's law: (P° − P)/P° = χ₂ (mole fraction of solute)."
+        },
+        {
+          "type": "single",
+          "text": "18 g of glucose (MW = 180 g/mol) is dissolved in 200 g of water. Given Kb(water) = 0.52 K·kg/mol, the boiling point elevation is:",
+          "options": [{"id":"a","text":"0.26 K"},{"id":"b","text":"0.52 K"},{"id":"c","text":"1.04 K"},{"id":"d","text":"0.13 K"}],
+          "correctAnswers": ["a"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Moles of glucose = 18/180 = 0.1 mol; m = 0.1/0.2 = 0.5 mol/kg; ΔTb = Kb×m = 0.52×0.5 = 0.26 K."
+        },
+        {
+          "type": "single",
+          "text": "Among the following equimolar aqueous solutions, the one with the HIGHEST osmotic pressure is:",
+          "options": [{"id":"a","text":"Glucose (C₆H₁₂O₆)"},{"id":"b","text":"NaCl"},{"id":"c","text":"CaCl₂"},{"id":"d","text":"Na₃PO₄"}],
+          "correctAnswers": ["d"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Osmotic pressure ∝ total solute particles. Na₃PO₄ → 4 ions (3Na⁺ + PO₄³⁻), giving highest particle count."
+        },
+        {
+          "type": "single",
+          "text": "The Van't Hoff factor (i) for a 0.01 M solution of K₂SO₄ (assuming complete dissociation) is:",
+          "options": [{"id":"a","text":"1"},{"id":"b","text":"2"},{"id":"c","text":"3"},{"id":"d","text":"4"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "K₂SO₄ → 2K⁺ + SO₄²⁻, giving 3 ions. Therefore i = 3."
+        },
+        {
+          "type": "single",
+          "text": "Henry's law states that at constant temperature, the solubility of a gas in a liquid is:",
+          "options": [{"id":"a","text":"Independent of pressure"},{"id":"b","text":"Directly proportional to partial pressure of the gas"},{"id":"c","text":"Inversely proportional to partial pressure"},{"id":"d","text":"Proportional to temperature"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Henry's law: p = KH × x, where x is mole fraction in solution. Solubility ∝ partial pressure."
+        },
+        {
+          "type": "single",
+          "text": "The standard Gibbs free energy change (ΔG°) and standard EMF (E°) of a cell are related by:",
+          "options": [{"id":"a","text":"ΔG° = nFE°"},{"id":"b","text":"ΔG° = −nFE°"},{"id":"c","text":"ΔG° = nRTE°"},{"id":"d","text":"ΔG° = RT ln E°"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "ΔG° = −nFE°. For a spontaneous cell reaction, E° > 0 and ΔG° < 0."
+        },
+        {
+          "type": "single",
+          "text": "During electrolysis of water, the gas liberated at the cathode is:",
+          "options": [{"id":"a","text":"Oxygen"},{"id":"b","text":"Hydrogen"},{"id":"c","text":"Ozone"},{"id":"d","text":"Water vapour"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "At cathode: 2H⁺ + 2e⁻ → H₂. Hydrogen is liberated at cathode; oxygen at anode."
+        },
+        {
+          "type": "single",
+          "text": "Kohlrausch's law states that at infinite dilution, the molar conductivity of an electrolyte equals:",
+          "options": [{"id":"a","text":"Sum of ionic conductivities of all ions"},{"id":"b","text":"Product of ionic conductivities"},{"id":"c","text":"Conductivity of the solvent"},{"id":"d","text":"Specific conductance"}],
+          "correctAnswers": ["a"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Λ°m = ν₊λ₊° + ν₋λ₋°. At infinite dilution, ions act independently."
+        },
+        {
+          "type": "single",
+          "text": "The standard electrode potential of the standard hydrogen electrode (SHE) is:",
+          "options": [{"id":"a","text":"+1.00 V"},{"id":"b","text":"−1.00 V"},{"id":"c","text":"0.00 V"},{"id":"d","text":"+0.76 V"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "By convention, the standard electrode potential of SHE is defined as exactly 0.00 V."
+        },
+        {
+          "type": "single",
+          "text": "The number of Faradays of electricity needed to deposit one mole of copper from a CuSO₄ solution (Cu²⁺ + 2e⁻ → Cu) is:",
+          "options": [{"id":"a","text":"1 F"},{"id":"b","text":"2 F"},{"id":"c","text":"3 F"},{"id":"d","text":"0.5 F"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Each Cu²⁺ ion requires 2 electrons; so 1 mole Cu requires 2 × 96500 C = 2 F."
+        },
+        {
+          "type": "single",
+          "text": "The cell reaction at the anode (oxidation electrode) in an electrochemical cell always involves:",
+          "options": [{"id":"a","text":"Reduction"},{"id":"b","text":"Oxidation"},{"id":"c","text":"Neither oxidation nor reduction"},{"id":"d","text":"Alternating oxidation and reduction"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Anode is the electrode where oxidation occurs (loss of electrons)."
+        },
+        {
+          "type": "single",
+          "text": "Among Cu, Ag, Fe, and Au, which metal can displace hydrogen from dilute H₂SO₄?",
+          "options": [{"id":"a","text":"Cu"},{"id":"b","text":"Ag"},{"id":"c","text":"Fe"},{"id":"d","text":"Au"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Fe lies above H in the electrochemical activity series and can displace H₂ from dilute acids."
+        },
+        {
+          "type": "single",
+          "text": "For a first-order reaction, the half-life t₁/₂ is given by:",
+          "options": [{"id":"a","text":"t₁/₂ = 0.693/k"},{"id":"b","text":"t₁/₂ = 1/(k[A]₀)"},{"id":"c","text":"t₁/₂ = 2.303/k"},{"id":"d","text":"t₁/₂ = k/0.693"}],
+          "correctAnswers": ["a"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "For first-order: t₁/₂ = ln2/k = 0.693/k. It is independent of initial concentration."
+        },
+        {
+          "type": "single",
+          "text": "The unit of rate constant for a second-order reaction is:",
+          "options": [{"id":"a","text":"s⁻¹"},{"id":"b","text":"mol L⁻¹ s⁻¹"},{"id":"c","text":"L mol⁻¹ s⁻¹"},{"id":"d","text":"L² mol⁻² s⁻¹"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "For nth order: units of k = L^(n−1) mol^(1−n) s⁻¹. For n=2: L mol⁻¹ s⁻¹."
+        },
+        {
+          "type": "single",
+          "text": "A catalyst increases the rate of reaction by:",
+          "options": [{"id":"a","text":"Increasing the activation energy"},{"id":"b","text":"Decreasing the activation energy"},{"id":"c","text":"Increasing the temperature"},{"id":"d","text":"Changing the equilibrium constant"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "A catalyst provides an alternative pathway with lower activation energy, increasing reaction rate."
+        },
+        {
+          "type": "single",
+          "text": "If the activation energy of a reaction is zero, then the rate constant is:",
+          "options": [{"id":"a","text":"Zero"},{"id":"b","text":"Equal to Arrhenius frequency factor A"},{"id":"c","text":"Infinity"},{"id":"d","text":"Equal to 1"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "k = Ae^(−Ea/RT). If Ea = 0, then k = Ae⁰ = A. Rate is independent of temperature."
+        },
+        {
+          "type": "single",
+          "text": "The complex [Fe(CN)₆]³⁻ contains Fe in the +3 oxidation state. With CN⁻ as strong-field ligand, the number of unpaired electrons is:",
+          "options": [{"id":"a","text":"5"},{"id":"b","text":"3"},{"id":"c","text":"1"},{"id":"d","text":"0"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Fe³⁺ is d⁵. With strong-field CN⁻ in octahedral field: configuration is t₂g⁵eg⁰ → 1 unpaired electron."
+        },
+        {
+          "type": "single",
+          "text": "The complex K₂[PtCl₄] is square planar. This is because Pt²⁺ is a _____ ion.",
+          "options": [{"id":"a","text":"d¹⁰"},{"id":"b","text":"d⁸"},{"id":"c","text":"d⁶"},{"id":"d","text":"d⁴"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "d⁸ metal ions (like Pt²⁺, Pd²⁺, Au³⁺, Ni²⁺ with strong ligands) form square planar complexes."
+        },
+        {
+          "type": "single",
+          "text": "Which of the following complexes shows optical isomerism?",
+          "options": [{"id":"a","text":"[Pt(NH₃)₂Cl₂]"},{"id":"b","text":"[Co(en)₃]³⁺"},{"id":"c","text":"[Co(NH₃)₄Cl₂]⁺"},{"id":"d","text":"[NiCl₄]²⁻"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "[Co(en)₃]³⁺ is a chiral complex with no plane of symmetry; it exists as Δ and Λ enantiomers."
+        },
+        {
+          "type": "single",
+          "text": "The CFSE for an octahedral d³ complex in a weak crystal field is:",
+          "options": [{"id":"a","text":"−0.8 Δo"},{"id":"b","text":"−1.2 Δo"},{"id":"c","text":"−0.6 Δo"},{"id":"d","text":"−0.4 Δo"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "d³ in octahedral (t₂g³eg⁰): CFSE = 3 × (−0.4Δo) = −1.2 Δo. Same in weak and strong field for d³."
+        },
+        {
+          "type": "single",
+          "text": "The IUPAC name of the complex [Co(en)₂Cl₂]Cl is:",
+          "options": [{"id":"a","text":"Dichloridobis(ethane-1,2-diamine)cobalt(II) chloride"},{"id":"b","text":"Dichloridobis(ethane-1,2-diamine)cobalt(III) chloride"},{"id":"c","text":"Bis(ethylenediamine)cobalt(III) dichloride chloride"},{"id":"d","text":"Dichlorobis(en)cobalt(II) chloride"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Co has coordination number 6 (2en + 2Cl in complex). Charge on complex = 3+ (from outer Cl⁻), so Co is +3."
+        },
+        {
+          "type": "single",
+          "text": "The product of acidic dehydration of propan-2-ol at 170°C is:",
+          "options": [{"id":"a","text":"Propan-1-ol"},{"id":"b","text":"Propane"},{"id":"c","text":"Propene"},{"id":"d","text":"Propanal"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Dehydration of propan-2-ol with conc. H₂SO₄ at 170°C gives propene (CH₃CH=CH₂) via E1 elimination."
+        },
+        {
+          "type": "single",
+          "text": "Which reagent is used to convert benzene to nitrobenzene?",
+          "options": [{"id":"a","text":"Dilute HNO₃ alone"},{"id":"b","text":"Conc. HNO₃ + conc. H₂SO₄ (nitrating mixture)"},{"id":"c","text":"HNO₃ + HCl"},{"id":"d","text":"NaNO₂ + HCl"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Nitration of benzene uses a nitrating mixture (conc. HNO₃ + conc. H₂SO₄) generating the electrophile NO₂⁺."
+        },
+        {
+          "type": "single",
+          "text": "Lucas test (ZnCl₂/conc. HCl) distinguishes between:",
+          "options": [{"id":"a","text":"Aldehydes and ketones"},{"id":"b","text":"Primary, secondary, and tertiary alcohols"},{"id":"c","text":"Alkenes and alkynes"},{"id":"d","text":"Acidic and basic compounds"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Lucas test: 3° alcohol gives immediate turbidity; 2° gives turbidity in ~5 min; 1° shows no turbidity at room temp."
+        },
+        {
+          "type": "single",
+          "text": "Tollens' reagent (ammoniacal silver nitrate) gives a silver mirror test with:",
+          "options": [{"id":"a","text":"Ketones only"},{"id":"b","text":"Aldehydes only"},{"id":"c","text":"Both aldehydes and ketones"},{"id":"d","text":"Alcohols only"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Tollens' reagent oxidises aldehydes (RCHO → RCOO⁻), forming silver mirror. Ketones are not oxidised."
+        },
+        {
+          "type": "single",
+          "text": "The reaction of acetaldehyde (CH₃CHO) with HCN gives:",
+          "options": [{"id":"a","text":"A cyanohydrin (CH₃CH(OH)CN)"},{"id":"b","text":"An aldehyde"},{"id":"c","text":"A carboxylic acid"},{"id":"d","text":"An ester"}],
+          "correctAnswers": ["a"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "HCN adds across C=O (nucleophilic addition) to give a cyanohydrin: CH₃CHO + HCN → CH₃CH(OH)CN."
+        },
+        {
+          "type": "single",
+          "text": "Among the following, which compound undergoes aldol condensation?",
+          "options": [{"id":"a","text":"HCHO (Formaldehyde)"},{"id":"b","text":"CH₃CHO (Acetaldehyde)"},{"id":"c","text":"CCl₃CHO (Chloral)"},{"id":"d","text":"C₆H₅CHO (Benzaldehyde)"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Aldol condensation requires α-hydrogen atoms. Only CH₃CHO has α-H atoms (on the CH₃ group)."
+        },
+        {
+          "type": "single",
+          "text": "The product of the reaction of aniline (C₆H₅NH₂) with acetic anhydride is:",
+          "options": [{"id":"a","text":"Acetanilide"},{"id":"b","text":"Benzamide"},{"id":"c","text":"Aniline acetate"},{"id":"d","text":"N,N-diacetylaniline"}],
+          "correctAnswers": ["a"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "C₆H₅NH₂ + (CH₃CO)₂O → C₆H₅NHCOCH₃ (acetanilide) + CH₃COOH."
+        },
+        {
+          "type": "single",
+          "text": "The total number of σ bonds in a benzene (C₆H₆) molecule is:",
+          "options": [{"id":"a","text":"6"},{"id":"b","text":"9"},{"id":"c","text":"12"},{"id":"d","text":"3"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Benzene has 6 C−H σ bonds and 6 C−C σ bonds (the ring), totalling 12 σ bonds."
+        },
+        {
+          "type": "single",
+          "text": "The hybridisation of carbon in CO₂ is:",
+          "options": [{"id":"a","text":"sp"},{"id":"b","text":"sp²"},{"id":"c","text":"sp³"},{"id":"d","text":"sp³d"}],
+          "correctAnswers": ["a"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Carbon in CO₂ forms 2 double bonds (O=C=O), using sp hybridisation with linear geometry."
+        },
+        {
+          "type": "single",
+          "text": "Among N₂, O₂, F₂, which has the highest bond order?",
+          "options": [{"id":"a","text":"O₂ (bond order 2)"},{"id":"b","text":"N₂ (bond order 3)"},{"id":"c","text":"F₂ (bond order 1)"},{"id":"d","text":"All have the same bond order"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "N₂ has a triple bond (bond order 3), making it the strongest and shortest of the three."
+        },
+        {
+          "type": "single",
+          "text": "VSEPR theory predicts that NH₃ has a _____ structure:",
+          "options": [{"id":"a","text":"Trigonal planar"},{"id":"b","text":"Tetrahedral"},{"id":"c","text":"Trigonal pyramidal"},{"id":"d","text":"Linear"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "NH₃ has 3 bonding pairs and 1 lone pair (sp³). The lone pair pushes bonds down, giving trigonal pyramidal geometry."
+        },
+        {
+          "type": "single",
+          "text": "Which of the following molecules has zero dipole moment?",
+          "options": [{"id":"a","text":"NH₃"},{"id":"b","text":"H₂O"},{"id":"c","text":"BF₃"},{"id":"d","text":"CHCl₃"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "BF₃ is trigonal planar (sp²); symmetric arrangement causes bond dipoles to cancel → zero net dipole moment."
+        },
+        {
+          "type": "single",
+          "text": "Hess's law of constant heat summation is based on:",
+          "options": [{"id":"a","text":"Conservation of mass"},{"id":"b","text":"Conservation of energy (First law of thermodynamics)"},{"id":"c","text":"Conservation of momentum"},{"id":"d","text":"Le Chatelier's principle"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Hess's law states enthalpy change is independent of path (state function), based on conservation of energy."
+        },
+        {
+          "type": "single",
+          "text": "For a process to be spontaneous at constant temperature and pressure:",
+          "options": [{"id":"a","text":"ΔG > 0"},{"id":"b","text":"ΔG < 0"},{"id":"c","text":"ΔG = 0"},{"id":"d","text":"ΔH > 0"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "At constant T and P, ΔG = ΔH − TΔS. Spontaneous processes have ΔG < 0."
+        },
+        {
+          "type": "single",
+          "text": "12 g of carbon (MW = 12) burns completely in excess O₂. Given ΔcH°(C) = −393.5 kJ/mol, heat released is:",
+          "options": [{"id":"a","text":"32.8 kJ"},{"id":"b","text":"393.5 kJ"},{"id":"c","text":"786 kJ"},{"id":"d","text":"196.75 kJ"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "12 g of carbon = 1 mol. Heat released = 1 × 393.5 = 393.5 kJ."
+        },
+        {
+          "type": "single",
+          "text": "For the equilibrium N₂(g) + 3H₂(g) ⇌ 2NH₃(g), increasing pressure will shift equilibrium:",
+          "options": [{"id":"a","text":"Backward (towards reactants)"},{"id":"b","text":"Forward (towards products)"},{"id":"c","text":"No change"},{"id":"d","text":"The reaction stops"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "4 moles of gas → 2 moles of gas. Increasing pressure favours the side with fewer moles of gas (forward reaction)."
+        },
+        {
+          "type": "single",
+          "text": "The relationship between Kp and Kc for a gaseous equilibrium with Δn moles of gas is:",
+          "options": [{"id":"a","text":"Kp = Kc + RT"},{"id":"b","text":"Kp = Kc × (RT)^Δn"},{"id":"c","text":"Kp = Kc / RT"},{"id":"d","text":"Kp = Kc × R/T"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Kp = Kc(RT)^Δn, where Δn = moles of gaseous products − moles of gaseous reactants."
+        },
+        {
+          "type": "single",
+          "text": "For the reaction H₂(g) + I₂(g) ⇌ 2HI(g), the relationship between Kp and Kc is:",
+          "options": [{"id":"a","text":"Kp > Kc"},{"id":"b","text":"Kp < Kc"},{"id":"c","text":"Kp = Kc"},{"id":"d","text":"Cannot be determined"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Δn = 2 − (1+1) = 0. Therefore Kp = Kc(RT)⁰ = Kc."
+        },
+        {
+          "type": "single",
+          "text": "Nylon-6,6 is a condensation polymer formed from:",
+          "options": [{"id":"a","text":"Caprolactam"},{"id":"b","text":"Hexamethylenediamine and adipic acid"},{"id":"c","text":"Ethylene glycol and terephthalic acid"},{"id":"d","text":"Styrene and butadiene"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Nylon-6,6 is made from hexamethylenediamine [H₂N(CH₂)₆NH₂] and adipic acid [HOOC(CH₂)₄COOH]."
+        },
+        {
+          "type": "single",
+          "text": "Natural rubber is a polymer of:",
+          "options": [{"id":"a","text":"Chloroprene"},{"id":"b","text":"Styrene"},{"id":"c","text":"Isoprene (2-methylbuta-1,3-diene)"},{"id":"d","text":"Butadiene"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Natural rubber is cis-1,4-polyisoprene, a polymer of isoprene (CH₂=C(CH₃)−CH=CH₂)."
+        },
+        {
+          "type": "single",
+          "text": "The primary structure of a protein refers to:",
+          "options": [{"id":"a","text":"The 3D folded conformation"},{"id":"b","text":"The sequence of amino acids linked by peptide bonds"},{"id":"c","text":"The alpha-helical or beta-sheet arrangement"},{"id":"d","text":"The quaternary arrangement of subunits"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Primary structure = the linear sequence of amino acids connected by peptide bonds."
+        },
+        {
+          "type": "single",
+          "text": "Which vitamin is essential for blood clotting?",
+          "options": [{"id":"a","text":"Vitamin A"},{"id":"b","text":"Vitamin C"},{"id":"c","text":"Vitamin D"},{"id":"d","text":"Vitamin K"}],
+          "correctAnswers": ["d"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Vitamin K is required for the synthesis of prothrombin and other clotting factors."
+        }
+      ]
+    },
+    {
+      "title": "Chemistry - Section B",
+      "description": "Attempt any 10 out of 15 questions. Only your best 10 answers will be scored.",
+      "attemptLimit": 10,
+      "questions": [
+        {
+          "type": "single",
+          "text": "The Bohr model of the atom could NOT successfully explain:",
+          "options": [{"id":"a","text":"Line spectrum of hydrogen"},{"id":"b","text":"Ground state energy of hydrogen"},{"id":"c","text":"Spectra of multi-electron atoms"},{"id":"d","text":"Quantisation of angular momentum"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Bohr's model works only for one-electron species (H, He⁺, Li²⁺). It fails for multi-electron atoms."
+        },
+        {
+          "type": "single",
+          "text": "An electron in a 4f subshell has quantum numbers:",
+          "options": [{"id":"a","text":"n=4, l=3"},{"id":"b","text":"n=4, l=2"},{"id":"c","text":"n=4, l=4"},{"id":"d","text":"n=4, l=1"}],
+          "correctAnswers": ["a"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "For f subshell, l = 3. So 4f: n = 4, l = 3."
+        },
+        {
+          "type": "single",
+          "text": "Heisenberg's uncertainty principle states:",
+          "options": [{"id":"a","text":"Δx · Δp ≥ h/4π"},{"id":"b","text":"Δx · Δp ≤ h/4π"},{"id":"c","text":"Δx = Δp"},{"id":"d","text":"ΔE · Δt = 0"}],
+          "correctAnswers": ["a"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "The uncertainty principle: Δx·Δp ≥ ħ/2 = h/4π. Position and momentum cannot both be precisely determined."
+        },
+        {
+          "type": "single",
+          "text": "Across a period in the periodic table, ionisation enthalpy generally:",
+          "options": [{"id":"a","text":"Decreases"},{"id":"b","text":"Increases"},{"id":"c","text":"Remains constant"},{"id":"d","text":"First increases then decreases"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Increasing nuclear charge across a period holds electrons more tightly, raising ionisation enthalpy."
+        },
+        {
+          "type": "single",
+          "text": "Among the halogens, the element with the highest electron affinity is:",
+          "options": [{"id":"a","text":"Fluorine (F)"},{"id":"b","text":"Chlorine (Cl)"},{"id":"c","text":"Bromine (Br)"},{"id":"d","text":"Iodine (I)"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Cl has higher electron affinity than F because F's small size causes strong electron-electron repulsion when an electron is added."
+        },
+        {
+          "type": "single",
+          "text": "The highest oxidation state exhibited by any first-row transition metal in its compounds is:",
+          "options": [{"id":"a","text":"+6 (by Cr or Fe)"},{"id":"b","text":"+7 (by Mn)"},{"id":"c","text":"+5 (by V)"},{"id":"d","text":"+4 (by Ti)"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Mn shows +7 in KMnO₄ (potassium permanganate), the highest oxidation state in first row d-block elements."
+        },
+        {
+          "type": "single",
+          "text": "Which of the following d-block ion is diamagnetic?",
+          "options": [{"id":"a","text":"Fe³⁺ (d⁵)"},{"id":"b","text":"Cu²⁺ (d⁹)"},{"id":"c","text":"Zn²⁺ (d¹⁰)"},{"id":"d","text":"Mn²⁺ (d⁵)"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Zn²⁺ has d¹⁰ configuration (all electrons paired) → diamagnetic. All others have unpaired electrons."
+        },
+        {
+          "type": "single",
+          "text": "XeF₂ has which molecular geometry?",
+          "options": [{"id":"a","text":"V-shaped"},{"id":"b","text":"Linear"},{"id":"c","text":"T-shaped"},{"id":"d","text":"Trigonal bipyramidal"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Xe in XeF₂ has 5 electron pairs (3 lone pairs + 2 bonding pairs), giving trigonal bipyramidal electron geometry but linear molecular geometry."
+        },
+        {
+          "type": "single",
+          "text": "Phosphorus exists as P₄ molecules (rather than P₂) because:",
+          "options": [{"id":"a","text":"P has high electronegativity like N"},{"id":"b","text":"P is too large for stable pπ–pπ double bonds"},{"id":"c","text":"P₄ has lower entropy"},{"id":"d","text":"P forms metallic bonds"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Unlike N, P cannot form stable pπ–pπ bonds due to its large atomic size, so it forms P₄ with single bonds instead."
+        },
+        {
+          "type": "single",
+          "text": "Among alkaline earth metals, which does NOT react with water under normal conditions?",
+          "options": [{"id":"a","text":"Ca"},{"id":"b","text":"Ba"},{"id":"c","text":"Sr"},{"id":"d","text":"Be"}],
+          "correctAnswers": ["d"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Be does not react with water due to a protective oxide layer and high charge density."
+        },
+        {
+          "type": "single",
+          "text": "When sodium burns in excess oxygen, the product formed is:",
+          "options": [{"id":"a","text":"Na₂O (sodium oxide)"},{"id":"b","text":"Na₂O₂ (sodium peroxide)"},{"id":"c","text":"NaO₂ (sodium superoxide)"},{"id":"d","text":"NaOH (sodium hydroxide)"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Na burns in excess O₂ to give Na₂O₂. Only K, Rb, Cs form superoxides (MO₂) with excess O₂."
+        },
+        {
+          "type": "single",
+          "text": "Lanthanoid contraction occurs due to:",
+          "options": [{"id":"a","text":"Increase in nuclear charge without effective shielding by 4f electrons"},{"id":"b","text":"Decrease in nuclear charge across the series"},{"id":"c","text":"Strong shielding by d-electrons"},{"id":"d","text":"Increase in atomic radius across the series"}],
+          "correctAnswers": ["a"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "4f electrons shield the nuclear charge poorly from outer electrons. As nuclear charge increases across lanthanoids, atomic size decreases."
+        },
+        {
+          "type": "single",
+          "text": "Cl₂ reacts with cold dilute NaOH to give:",
+          "options": [{"id":"a","text":"NaCl and NaClO₃"},{"id":"b","text":"NaCl and NaOCl"},{"id":"c","text":"NaHCO₃ and NaCl"},{"id":"d","text":"NaCl only"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Cl₂ + 2NaOH(cold) → NaCl + NaOCl + H₂O. Hot concentrated NaOH gives NaClO₃."
+        },
+        {
+          "type": "single",
+          "text": "The primary gas responsible for depletion of the stratospheric ozone layer is:",
+          "options": [{"id":"a","text":"CO₂"},{"id":"b","text":"N₂O"},{"id":"c","text":"Chlorofluorocarbons (CFCs)"},{"id":"d","text":"CH₄"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "CFCs release Cl· radicals in the stratosphere, which catalytically destroy ozone: Cl· + O₃ → ClO· + O₂."
+        },
+        {
+          "type": "single",
+          "text": "Which of the following is NOT a greenhouse gas?",
+          "options": [{"id":"a","text":"CO₂"},{"id":"b","text":"CH₄"},{"id":"c","text":"N₂"},{"id":"d","text":"N₂O"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "N₂ is a non-polar, diatomic molecule that does not absorb IR radiation and is not a greenhouse gas."
+        }
+      ]
+    },
+    {
+      "title": "Biology - Section A",
+      "description": "Compulsory section. Attempt all 45 questions. +4 for correct, -1 for incorrect.",
+      "questions": [
+        {
+          "type": "single",
+          "text": "Which organelle is responsible for the synthesis of lipids?",
+          "options": [{"id":"a","text":"Rough endoplasmic reticulum"},{"id":"b","text":"Smooth endoplasmic reticulum"},{"id":"c","text":"Peroxisome"},{"id":"d","text":"Lysosome"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Smooth ER (SER) is the primary site of lipid and steroid synthesis in the cell."
+        },
+        {
+          "type": "single",
+          "text": "The fluid mosaic model of the cell membrane was proposed by:",
+          "options": [{"id":"a","text":"Robert Hooke and Schleiden"},{"id":"b","text":"Singer and Nicolson"},{"id":"c","text":"Watson and Crick"},{"id":"d","text":"Jacob and Monod"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Singer and Nicolson (1972) proposed the fluid mosaic model, describing the membrane as a fluid bilayer with embedded proteins."
+        },
+        {
+          "type": "single",
+          "text": "Plasmodesmata are:",
+          "options": [{"id":"a","text":"Structures found in chloroplasts"},{"id":"b","text":"Cytoplasmic connections between adjacent plant cells"},{"id":"c","text":"Pores in the nuclear envelope"},{"id":"d","text":"Connections between mitochondria"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Plasmodesmata are cytoplasmic bridges that pass through cell walls, connecting neighbouring plant cells."
+        },
+        {
+          "type": "single",
+          "text": "70S ribosomes are found in:",
+          "options": [{"id":"a","text":"Cytoplasm of eukaryotes"},{"id":"b","text":"Prokaryotes, chloroplasts, and mitochondria"},{"id":"c","text":"Nucleus of eukaryotes"},{"id":"d","text":"Golgi apparatus"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "70S ribosomes are found in prokaryotes and in endosymbiotic organelles (mitochondria and chloroplasts) of eukaryotes."
+        },
+        {
+          "type": "single",
+          "text": "Which organelle is called the 'powerhouse of the cell'?",
+          "options": [{"id":"a","text":"Nucleus"},{"id":"b","text":"Ribosome"},{"id":"c","text":"Mitochondria"},{"id":"d","text":"Golgi apparatus"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Mitochondria produce ATP through oxidative phosphorylation, earning the name 'powerhouse of the cell'."
+        },
+        {
+          "type": "single",
+          "text": "Crossing over during meiosis occurs in which substage of prophase I?",
+          "options": [{"id":"a","text":"Leptotene"},{"id":"b","text":"Zygotene"},{"id":"c","text":"Pachytene"},{"id":"d","text":"Diplotene"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Crossing over (exchange of genetic material between non-sister chromatids) occurs during pachytene of prophase I."
+        },
+        {
+          "type": "single",
+          "text": "Colchicine arrests cell division at metaphase by:",
+          "options": [{"id":"a","text":"Inhibiting DNA replication"},{"id":"b","text":"Disrupting spindle fibre formation"},{"id":"c","text":"Preventing cytokinesis"},{"id":"d","text":"Inhibiting centriole duplication"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Colchicine binds tubulin and prevents polymerisation of microtubules, disrupting spindle formation."
+        },
+        {
+          "type": "single",
+          "text": "The number of chromosomes in a human cell immediately after meiosis I is:",
+          "options": [{"id":"a","text":"46"},{"id":"b","text":"23"},{"id":"c","text":"92"},{"id":"d","text":"12"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "After meiosis I, the cell is haploid with 23 chromosomes (each still consisting of 2 sister chromatids)."
+        },
+        {
+          "type": "single",
+          "text": "Synapsis of homologous chromosomes occurs during:",
+          "options": [{"id":"a","text":"Leptotene"},{"id":"b","text":"Zygotene"},{"id":"c","text":"Pachytene"},{"id":"d","text":"Metaphase I"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Synapsis (pairing of homologous chromosomes to form bivalents) occurs during zygotene of prophase I."
+        },
+        {
+          "type": "single",
+          "text": "The enzyme that unwinds the DNA double helix during replication is:",
+          "options": [{"id":"a","text":"DNA polymerase III"},{"id":"b","text":"Primase"},{"id":"c","text":"Helicase"},{"id":"d","text":"DNA ligase"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Helicase breaks hydrogen bonds between base pairs, unwinding the double helix at the replication fork."
+        },
+        {
+          "type": "single",
+          "text": "The start codon AUG codes for the amino acid:",
+          "options": [{"id":"a","text":"Alanine"},{"id":"b","text":"Valine"},{"id":"c","text":"Methionine"},{"id":"d","text":"Leucine"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "AUG is the universal start codon and codes for methionine (Met/M). All polypeptides begin with Met."
+        },
+        {
+          "type": "single",
+          "text": "Post-transcriptional modification of hnRNA does NOT include:",
+          "options": [{"id":"a","text":"5' capping with 7-methylguanosine"},{"id":"b","text":"3' polyadenylation"},{"id":"c","text":"Splicing out of introns"},{"id":"d","text":"Methylation of adenine residues within the coding sequence"}],
+          "correctAnswers": ["d"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "hnRNA processing includes 5' capping, 3' poly-A tail addition, and splicing. Adenine methylation in coding sequences is not a standard modification."
+        },
+        {
+          "type": "single",
+          "text": "The template strand used during transcription is also called the:",
+          "options": [{"id":"a","text":"Coding strand"},{"id":"b","text":"Sense strand"},{"id":"c","text":"Antisense (non-coding) strand"},{"id":"d","text":"Leading strand"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "The template strand (3'→5') is also called the antisense or non-coding strand. The non-template strand has the same sequence as mRNA."
+        },
+        {
+          "type": "single",
+          "text": "In the lac operon, the inducer molecule that prevents the repressor from binding to the operator is:",
+          "options": [{"id":"a","text":"Glucose"},{"id":"b","text":"Allolactose (metabolite of lactose)"},{"id":"c","text":"Galactose"},{"id":"d","text":"cAMP"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Allolactose (formed from lactose) binds the lac repressor, causing it to dissociate from the operator, allowing transcription."
+        },
+        {
+          "type": "single",
+          "text": "Mendel's law of independent assortment does NOT apply when:",
+          "options": [{"id":"a","text":"Genes are on different chromosomes"},{"id":"b","text":"Genes are on the same chromosome (genetic linkage)"},{"id":"c","text":"One allele is dominant over the other"},{"id":"d","text":"Genes show incomplete dominance"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Linked genes (on the same chromosome) do not assort independently; they tend to be inherited together."
+        },
+        {
+          "type": "single",
+          "text": "A woman who is a carrier for colourblindness (X-linked recessive, XᶜX) marries a normal man (XY). The probability of having a colourblind child is:",
+          "options": [{"id":"a","text":"1/4"},{"id":"b","text":"1/2"},{"id":"c","text":"0"},{"id":"d","text":"3/4"}],
+          "correctAnswers": ["a"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Offspring: XᶜX (carrier daughter), XX (normal daughter), XᶜY (colourblind son), XY (normal son). 1 in 4 = 1/4 chance."
+        },
+        {
+          "type": "single",
+          "text": "A test cross is performed by crossing the organism of unknown genotype with a:",
+          "options": [{"id":"a","text":"Dominant homozygous individual"},{"id":"b","text":"Recessive homozygous individual"},{"id":"c","text":"F₁ hybrid"},{"id":"d","text":"Heterozygous individual"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "In a test cross, the unknown genotype is crossed with a recessive homozygote (aa) to reveal which alleles are present."
+        },
+        {
+          "type": "single",
+          "text": "Down syndrome (Trisomy 21) is characterised by having _____ chromosomes in somatic cells:",
+          "options": [{"id":"a","text":"45"},{"id":"b","text":"44"},{"id":"c","text":"47"},{"id":"d","text":"48"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Down syndrome results from trisomy of chromosome 21 (2n + 1 = 47)."
+        },
+        {
+          "type": "single",
+          "text": "Turner syndrome (45, XO) is characterised by:",
+          "options": [{"id":"a","text":"Male phenotype with extra X chromosome"},{"id":"b","text":"Female phenotype, sterile, webbed neck, short stature"},{"id":"c","text":"Female with extra chromosome 21"},{"id":"d","text":"Male with Klinefelter features"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Turner syndrome (45,XO): female with short stature, webbed neck, sterile, underdeveloped secondary sex characters."
+        },
+        {
+          "type": "single",
+          "text": "A Y-chromosome linked (holandric) trait is transmitted:",
+          "options": [{"id":"a","text":"From mother to all children"},{"id":"b","text":"From father to all sons only"},{"id":"c","text":"From father to all daughters only"},{"id":"d","text":"From mother to all sons"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Holandric genes are on the Y chromosome and are transmitted from father to ALL sons (never to daughters)."
+        },
+        {
+          "type": "single",
+          "text": "The enzyme that converts pepsinogen into pepsin is:",
+          "options": [{"id":"a","text":"Trypsin"},{"id":"b","text":"Hydrochloric acid (HCl)"},{"id":"c","text":"Rennin"},{"id":"d","text":"Enterokinase"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "HCl in gastric juice activates pepsinogen to pepsin by autocatalytic cleavage. Pepsin then continues activating more pepsinogen."
+        },
+        {
+          "type": "single",
+          "text": "Bile does NOT contain:",
+          "options": [{"id":"a","text":"Bile salts"},{"id":"b","text":"Bile pigments (bilirubin and biliverdin)"},{"id":"c","text":"Cholesterol"},{"id":"d","text":"Digestive enzymes"}],
+          "correctAnswers": ["d"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Bile contains bile salts, bile pigments, cholesterol, and water. It does NOT contain digestive enzymes; it emulsifies fats."
+        },
+        {
+          "type": "single",
+          "text": "The final products of complete protein digestion absorbed in the small intestine are:",
+          "options": [{"id":"a","text":"Polypeptides"},{"id":"b","text":"Dipeptides"},{"id":"c","text":"Amino acids"},{"id":"d","text":"Oligopeptides"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Proteins are fully hydrolysed to individual amino acids by proteases (pepsin, trypsin, chymotrypsin, peptidases)."
+        },
+        {
+          "type": "single",
+          "text": "Digestion of starch begins in the:",
+          "options": [{"id":"a","text":"Stomach"},{"id":"b","text":"Small intestine"},{"id":"c","text":"Large intestine"},{"id":"d","text":"Mouth (buccal cavity)"}],
+          "correctAnswers": ["d"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Salivary amylase (ptyalin) in the mouth starts breaking down starch into maltose."
+        },
+        {
+          "type": "single",
+          "text": "The pacemaker of the human heart is the:",
+          "options": [{"id":"a","text":"AV node"},{"id":"b","text":"SA node (sinoatrial node)"},{"id":"c","text":"Bundle of His"},{"id":"d","text":"Purkinje fibres"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "The SA node generates the primary rhythmic electrical impulse, setting the heart rate (~72 beats/min)."
+        },
+        {
+          "type": "single",
+          "text": "The blood vessel that carries oxygenated blood from the lungs to the left atrium is the:",
+          "options": [{"id":"a","text":"Pulmonary artery"},{"id":"b","text":"Pulmonary vein"},{"id":"c","text":"Aorta"},{"id":"d","text":"Superior vena cava"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Pulmonary veins carry oxygenated blood from the lungs to the left atrium. Pulmonary arteries carry deoxygenated blood to lungs."
+        },
+        {
+          "type": "single",
+          "text": "Normal blood pressure in a healthy adult is approximately:",
+          "options": [{"id":"a","text":"80/120 mmHg"},{"id":"b","text":"120/80 mmHg"},{"id":"c","text":"100/60 mmHg"},{"id":"d","text":"150/100 mmHg"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Normal blood pressure is 120 mmHg systolic (heart contracts) / 80 mmHg diastolic (heart relaxes)."
+        },
+        {
+          "type": "single",
+          "text": "The volume of air inspired or expired in each normal breath at rest is called:",
+          "options": [{"id":"a","text":"Vital capacity"},{"id":"b","text":"Tidal volume"},{"id":"c","text":"Residual volume"},{"id":"d","text":"Inspiratory reserve volume"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Tidal volume (~500 mL) is the air exchanged in one normal, quiet breath."
+        },
+        {
+          "type": "single",
+          "text": "The major form in which CO₂ is transported in the blood is as:",
+          "options": [{"id":"a","text":"Dissolved CO₂ in plasma"},{"id":"b","text":"Carbaminohaemoglobin"},{"id":"c","text":"Bicarbonate ions (HCO₃⁻)"},{"id":"d","text":"Bound to albumin"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "About 70% of CO₂ is carried as bicarbonate ions (HCO₃⁻); ~23% as carbaminohaemoglobin; ~7% dissolved."
+        },
+        {
+          "type": "single",
+          "text": "The cells that produce surfactant in the lungs are:",
+          "options": [{"id":"a","text":"Type I pneumocytes"},{"id":"b","text":"Type II pneumocytes"},{"id":"c","text":"Alveolar macrophages"},{"id":"d","text":"Goblet cells"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Type II pneumocytes secrete surfactant (dipalmitoyl phosphatidylcholine), which reduces alveolar surface tension."
+        },
+        {
+          "type": "single",
+          "text": "The juxtaglomerular apparatus (JGA) secretes the enzyme:",
+          "options": [{"id":"a","text":"ADH"},{"id":"b","text":"Aldosterone"},{"id":"c","text":"Renin"},{"id":"d","text":"ANF (atrial natriuretic factor)"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "JGA cells (granular cells) secrete renin when blood pressure falls, initiating the renin-angiotensin-aldosterone cascade."
+        },
+        {
+          "type": "single",
+          "text": "The countercurrent multiplier mechanism in the kidney loop of Henle creates:",
+          "options": [{"id":"a","text":"A gradient of decreasing osmolarity from cortex to medulla"},{"id":"b","text":"A gradient of increasing osmolarity from cortex to medulla"},{"id":"c","text":"Uniform osmolarity throughout the kidney"},{"id":"d","text":"A gradient of decreasing pH"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "The loop of Henle creates a hyperosmotic medullary interstitium (increasing osmolarity toward the inner medulla), enabling concentration of urine."
+        },
+        {
+          "type": "single",
+          "text": "Urea is primarily synthesised in the:",
+          "options": [{"id":"a","text":"Kidney"},{"id":"b","text":"Liver"},{"id":"c","text":"Pancreas"},{"id":"d","text":"Spleen"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Urea is produced in the liver via the ornithine cycle (urea cycle) from ammonia and CO₂."
+        },
+        {
+          "type": "single",
+          "text": "The glomerular filtration rate (GFR) in a healthy adult is approximately:",
+          "options": [{"id":"a","text":"12.5 mL/min"},{"id":"b","text":"125 mL/min"},{"id":"c","text":"1250 mL/min"},{"id":"d","text":"1.25 mL/min"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "GFR ≈ 125 mL/min (or 180 L/day). Most filtrate is reabsorbed; ~1.5 L urine is excreted per day."
+        },
+        {
+          "type": "single",
+          "text": "The neurotransmitter released at the neuromuscular junction is:",
+          "options": [{"id":"a","text":"Dopamine"},{"id":"b","text":"Serotonin"},{"id":"c","text":"Acetylcholine"},{"id":"d","text":"GABA"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Acetylcholine (ACh) is released from motor neuron terminals at the neuromuscular junction, triggering muscle contraction."
+        },
+        {
+          "type": "single",
+          "text": "Insulin is produced by which cells of the islets of Langerhans?",
+          "options": [{"id":"a","text":"Alpha cells (α)"},{"id":"b","text":"Beta cells (β)"},{"id":"c","text":"Delta cells (δ)"},{"id":"d","text":"F cells (PP cells)"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Beta cells secrete insulin. Alpha cells secrete glucagon. Delta cells secrete somatostatin."
+        },
+        {
+          "type": "single",
+          "text": "The hormone that stimulates uterine contractions during labour is:",
+          "options": [{"id":"a","text":"Estrogen"},{"id":"b","text":"Progesterone"},{"id":"c","text":"Oxytocin"},{"id":"d","text":"Relaxin"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Oxytocin, released from the posterior pituitary, causes uterine contractions during parturition and milk ejection."
+        },
+        {
+          "type": "single",
+          "text": "Adrenaline (epinephrine) is secreted by:",
+          "options": [{"id":"a","text":"Adrenal cortex"},{"id":"b","text":"Adrenal medulla"},{"id":"c","text":"Thyroid gland"},{"id":"d","text":"Anterior pituitary"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Adrenal medulla (chromaffin cells) secretes adrenaline and noradrenaline as part of the 'fight-or-flight' response."
+        },
+        {
+          "type": "single",
+          "text": "The site of light-dependent reactions (light reactions) in photosynthesis is the:",
+          "options": [{"id":"a","text":"Stroma of chloroplast"},{"id":"b","text":"Thylakoid membrane"},{"id":"c","text":"Outer membrane of chloroplast"},{"id":"d","text":"Cytoplasm"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Light reactions occur on the thylakoid membranes. The Calvin cycle (dark reactions) occurs in the stroma."
+        },
+        {
+          "type": "single",
+          "text": "Photorespiration involves which organelles in C3 plants?",
+          "options": [{"id":"a","text":"Mitochondria only"},{"id":"b","text":"Chloroplasts, peroxisomes, and mitochondria"},{"id":"c","text":"Chloroplasts only"},{"id":"d","text":"Peroxisomes and Golgi only"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Photorespiration begins in chloroplasts (RuBisCO oxygenase activity), continues in peroxisomes, and is completed in mitochondria."
+        },
+        {
+          "type": "single",
+          "text": "The plant hormone responsible for causing apical dominance is:",
+          "options": [{"id":"a","text":"Gibberellin"},{"id":"b","text":"Cytokinin"},{"id":"c","text":"Auxin (IAA)"},{"id":"d","text":"Abscisic acid"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "High auxin concentrations from the apical meristem inhibit growth of lateral buds, causing apical dominance."
+        },
+        {
+          "type": "single",
+          "text": "C4 plants (like maize and sugarcane) are more efficient in photosynthesis in hot, sunny conditions because:",
+          "options": [{"id":"a","text":"They lack RuBisCO"},{"id":"b","text":"They concentrate CO₂ around RuBisCO, minimising photorespiration"},{"id":"c","text":"They absorb more infrared radiation"},{"id":"d","text":"They have more chlorophyll"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "C4 plants fix CO₂ first via PEP carboxylase in mesophyll, then concentrate CO₂ in bundle sheath cells, suppressing RuBisCO oxygenase activity."
+        },
+        {
+          "type": "single",
+          "text": "Anaerobic respiration in yeast produces:",
+          "options": [{"id":"a","text":"CO₂ only"},{"id":"b","text":"CO₂ and ethanol (ethyl alcohol)"},{"id":"c","text":"O₂ and CO₂"},{"id":"d","text":"Lactic acid only"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Yeast fermentation: Pyruvate → Acetaldehyde → Ethanol + CO₂ (in the absence of O₂)."
+        },
+        {
+          "type": "single",
+          "text": "Vernalisation is the process by which:",
+          "options": [{"id":"a","text":"Seeds germinate after stratification with cold"},{"id":"b","text":"Plants are induced to flower following prolonged exposure to cold temperatures"},{"id":"c","text":"Leaves grow in response to blue light"},{"id":"d","text":"Roots grow toward water"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Vernalisation is the acceleration of flowering in plants by exposure to cold temperatures (e.g., winter wheat requires cold to flower in spring)."
+        }
+      ]
+    },
+    {
+      "title": "Biology - Section B",
+      "description": "Attempt any 10 out of 15 questions. Only your best 10 answers will be scored.",
+      "attemptLimit": 10,
+      "questions": [
+        {
+          "type": "single",
+          "text": "Restriction endonucleases cut DNA at:",
+          "options": [{"id":"a","text":"Random positions throughout the DNA"},{"id":"b","text":"Specific palindromic sequences"},{"id":"c","text":"Only at GC base pairs"},{"id":"d","text":"Non-specific sequences near the promoter"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Restriction enzymes recognise specific palindromic sequences (e.g., EcoRI recognises GAATTC) and cut at or near these sites."
+        },
+        {
+          "type": "single",
+          "text": "PCR (Polymerase Chain Reaction) requires the enzyme:",
+          "options": [{"id":"a","text":"Restriction endonuclease"},{"id":"b","text":"DNA ligase"},{"id":"c","text":"Taq polymerase (thermostable DNA polymerase)"},{"id":"d","text":"Reverse transcriptase"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Taq polymerase (from Thermus aquaticus) is thermostable and survives repeated heating cycles in PCR."
+        },
+        {
+          "type": "single",
+          "text": "Ti plasmid used in plant genetic engineering is derived from:",
+          "options": [{"id":"a","text":"Bacillus thuringiensis"},{"id":"b","text":"Agrobacterium tumefaciens"},{"id":"c","text":"Escherichia coli"},{"id":"d","text":"Rhizobium leguminosarum"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Ti (tumour-inducing) plasmid from A. tumefaciens can integrate T-DNA into the plant genome, making it a natural vector."
+        },
+        {
+          "type": "single",
+          "text": "Gel electrophoresis separates DNA fragments based on:",
+          "options": [{"id":"a","text":"Base composition (A+T vs G+C content)"},{"id":"b","text":"Size (number of base pairs) — smaller fragments migrate faster"},{"id":"c","text":"Protein-binding affinity"},{"id":"d","text":"Temperature of the gel"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "In agarose gel electrophoresis, all DNA fragments have similar charge/mass ratios; separation is by size. Smaller fragments migrate farther."
+        },
+        {
+          "type": "single",
+          "text": "Double fertilisation in angiosperms results in:",
+          "options": [{"id":"a","text":"Two embryos"},{"id":"b","text":"A diploid embryo and a triploid endosperm"},{"id":"c","text":"Only the embryo"},{"id":"d","text":"A tetraploid seed"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "One sperm fuses with egg → diploid embryo; the other sperm fuses with 2 polar nuclei → triploid (3n) endosperm."
+        },
+        {
+          "type": "single",
+          "text": "The corpus luteum, after ovulation, primarily secretes:",
+          "options": [{"id":"a","text":"FSH"},{"id":"b","text":"LH"},{"id":"c","text":"Progesterone (and some estrogen)"},{"id":"d","text":"hCG"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Corpus luteum (from ruptured follicle) secretes progesterone, which maintains the endometrium for implantation."
+        },
+        {
+          "type": "single",
+          "text": "Which feature is NOT characteristic of Kingdom Fungi?",
+          "options": [{"id":"a","text":"Heterotrophic nutrition"},{"id":"b","text":"Cell walls made of chitin"},{"id":"c","text":"Photosynthesis"},{"id":"d","text":"Reproduction by spores"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Fungi are heterotrophs (saprophytes, parasites, or symbionts). They lack chlorophyll and cannot perform photosynthesis."
+        },
+        {
+          "type": "single",
+          "text": "Viroids differ from viruses in that viroids:",
+          "options": [{"id":"a","text":"Contain double-stranded DNA"},{"id":"b","text":"Have no protein coat (capsid)"},{"id":"c","text":"Are much larger than viruses"},{"id":"d","text":"Can only infect bacteria"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Viroids consist only of small, circular ssRNA with no protein coat. They cause plant diseases (e.g., potato spindle tuber disease)."
+        },
+        {
+          "type": "single",
+          "text": "Mycorrhiza is a mutualistic association between:",
+          "options": [{"id":"a","text":"Algae and fungi (lichens)"},{"id":"b","text":"Fungi and roots of vascular plants"},{"id":"c","text":"Bacteria and legume roots"},{"id":"d","text":"Cyanobacteria and fungi"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Mycorrhiza is a symbiotic relationship between soil fungi and plant roots; fungi aid mineral absorption and plant provides carbohydrates."
+        },
+        {
+          "type": "single",
+          "text": "The climax community in ecological succession is best described as:",
+          "options": [{"id":"a","text":"Always a tropical rainforest"},{"id":"b","text":"A stable, self-sustaining community in equilibrium with the environment"},{"id":"c","text":"The pioneer community"},{"id":"d","text":"A community with maximum species diversity always"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "The climax community is the final stable state of succession, in equilibrium with local climate and soil."
+        },
+        {
+          "type": "single",
+          "text": "Lichens are considered an example of:",
+          "options": [{"id":"a","text":"Parasitism"},{"id":"b","text":"Commensalism"},{"id":"c","text":"Mutualism"},{"id":"d","text":"Competition"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Lichens are a mutualistic association between fungi and photosynthetic partners (algae or cyanobacteria). Both benefit."
+        },
+        {
+          "type": "single",
+          "text": "Which provides the most direct evidence for biological evolution?",
+          "options": [{"id":"a","text":"Comparative anatomy"},{"id":"b","text":"Fossil records"},{"id":"c","text":"Comparative embryology"},{"id":"d","text":"Biogeography"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Fossil records provide direct, chronological evidence of life forms from different geological periods, showing evolutionary changes over time."
+        },
+        {
+          "type": "single",
+          "text": "The theory of natural selection as the mechanism of evolution was proposed by:",
+          "options": [{"id":"a","text":"Lamarck"},{"id":"b","text":"Mendel"},{"id":"c","text":"Charles Darwin"},{"id":"d","text":"Hugo de Vries"}],
+          "correctAnswers": ["c"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Darwin proposed natural selection in 'On the Origin of Species' (1859). De Vries proposed mutation theory."
+        },
+        {
+          "type": "single",
+          "text": "The flippers of penguins and dolphins are an example of:",
+          "options": [{"id":"a","text":"Divergent evolution (homologous organs)"},{"id":"b","text":"Convergent evolution (analogous organs)"},{"id":"c","text":"Parallel evolution"},{"id":"d","text":"Co-evolution"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Penguin and dolphin flippers have different evolutionary origins but similar function — convergent evolution producing analogous structures."
+        },
+        {
+          "type": "single",
+          "text": "Biopiracy refers to:",
+          "options": [{"id":"a","text":"Piracy of biodiversity data from public databases"},{"id":"b","text":"Unauthorised use of biological resources or traditional knowledge from biodiverse regions without benefit sharing"},{"id":"c","text":"Illegal trade of endangered species"},{"id":"d","text":"Collection of specimens without scientific permits"}],
+          "correctAnswers": ["b"],
+          "marks": 4, "negativeMarks": 1,
+          "explanation": "Biopiracy is the exploitation of biological resources and associated traditional knowledge of indigenous communities without fair compensation."
+        }
+      ]
+    }
+  ]
+}
